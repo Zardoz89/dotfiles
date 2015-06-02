@@ -1,6 +1,14 @@
 set nocompatible " Use Vim defaults (much better!)
 
+" Color theme
+set t_Co=256            " 256 color mode in term
+set background=dark
 syntax on
+if ( !has("unix") && has("gui_running") )
+  colors vividchalk
+else
+  colors darkblue
+endif
 
 filetype off " required!
 
@@ -139,13 +147,6 @@ if !has("unix")
 else
   let g:ycm_global_ycm_extra_conf = '~/.nvim/'
 " let g:ycm_global_ycm_extra_conf = '~/.neovim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
-endif
-
-" Color theme
-if ( !has("unix") && has("gui_running") )
-  colors vividchalk
-else
-  colors darkblue
 endif
 
 " Enable indent guides on boot and allow colorschemes to style them.
