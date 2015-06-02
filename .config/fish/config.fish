@@ -1,2 +1,0 @@
-set -x GTEST_ROOT /usr/src/gtest/
-set -x CHANGELOG_GITHUB_TOKEN "0323a6340a0196442329b80c5f6c79ba0b381ce2"

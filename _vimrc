@@ -1,10 +1,9 @@
 set nocompatible " Use Vim defaults (much better!)
-set runtimepath=~/.neovim/,$VIMRUNTIME
 
 syntax on
 
 filetype off " required!
- 
+
 if !has("unix")
   " Vundle on Windows
   set rtp+=~/vimfiles/bundle/Vundle.vim/
@@ -12,9 +11,13 @@ if !has("unix")
   call vundle#begin(path)
   set encoding=utf-8 " Should fix ugly characters on menu and welcome screen
 else
+  set runtimepath=~/.neovim/,$VIMRUNTIME
   set rtp+=~/.neovim/bundle/vundle/
   call vundle#rc('~/.neovim/bundle')
 endif
+
+" Stop Vim dying if there's massively long lines.
+set synmaxcol=128
 
 " let Vundle manage Vundle
 " required!
@@ -37,7 +40,7 @@ Bundle 'editorconfig-vim'
 "Bundle 'python.vim'
 
 " Markdown
-"Bundle 'https://github.com/tpope/vim-markdown.git'
+Bundle 'https://github.com/tpope/vim-markdown.git'
 
 " Git
 Bundle 'https://github.com/tpope/vim-fugitive'
@@ -50,7 +53,7 @@ filetype plugin indent on " required!
 set t_Co=256 " 256 color mode in term
 
 set autoread " ReaLoad a file if was changed outside of Vim
- 
+
 set cc=80 " Highlight column at 80
 set wrap " Enable line wrapping.
 
@@ -73,10 +76,15 @@ set expandtab " Pressing <Tab> puts spaces, and < and > for indenting uses psace
 " Rules to disable expandtab in makefiles and markdown files
 autocmd FileType make set noexpandtab nosta
 autocmd FileType md set expandtab nosta
+autocmd FileType xml setl noexpandtab nosta sw=4 sts=4 tabstop=4
 
-" autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType python set omnifunc=pythoncomplete#Complete
 
-autocmd! bufwritepost cimrc source ~/.nvimrc
+if !has("unix")
+  autocmd! bufwritepost cimrc source ~/_vimrc
+else
+  autocmd! bufwritepost cimrc source ~/.nvimrc
+endif
 
 " Enables mice in terminal vim
 "set mouse=a
@@ -104,36 +112,56 @@ let g:airline_powerline_fonts=1 " Powerline simbols. Hermit font support it
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#branch#enabled=1
 let g:airline#extensions#syntastic#enabled=1
+if ( !has("unix") && !has("gui_running") )
+  let g:airline_left_sep='>'                   " If we use a font without support of powerline simbols
+  let g:airline_right_sep='<'
+endif
 set showmode " Show current mode in the status line.
 set showcmd " Show the command in the status line.
-" 
-" " Try to use hermit font
-" if has("gui_running")
-"   if has("gui_gtk2")
-"     set guifont=Hermit\ Medium\ 10
-"   elseif has("gui_photon")
-"     set guifont=Hermit:s10
-"   elseif has("gui_kde")
-"     set guifont=Hermit/10/-1/5/50/0/0/0/1/0
-"   elseif has("x11")
-"     set guifont=-*-hermitr-medium-r-normal-*-*-180-*-*-m-*-*
-"   else
-"     set guifont=Hermit:h10:cDEFAULT
-"   endif
-" endif
-" 
-" " YouCompleteMe
+
+" Try to use Source Code  font
+set anti enc=utf-8
+if has("gui_running")
+  if has("gui_gtk2")
+    set guifont=Sauce\ Code\ Powerline\ 10
+  elseif has("gui_photon")
+    set guifont=Sauce\ Code\ Powerline:s10
+  elseif has("gui_kde")
+    set guifont=Sauce\ Code\ Powerline/10/-1/5/50/0/0/0/1/0
+  else
+    set guifont=Sauce\ Code\ Powerline:h10::cDEFAULT
+  endif
+endif
+
+" YouCompleteMe
+if !has("unix")
+  let g:ycm_global_ycm_extra_conf = '~/_vim/'
+else
+  let g:ycm_global_ycm_extra_conf = '~/.nvim/'
 " let g:ycm_global_ycm_extra_conf = '~/.neovim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
- 
+endif
+
 " Color theme
-colors vividchalk
-"colors darkblue
+if ( !has("unix") && has("gui_running") )
+  colors vividchalk
+else
+  colors darkblue
+endif
 
 " Enable indent guides on boot and allow colorschemes to style them.
-let g:indent_guides_enable_on_vim_startup=1
-let g:indent_guides_auto_colors = 1
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd guibg='#202020' ctermbg=darkgrey
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg='#101010'
+if ( !has("unix"))
+  if ( has("gui_running") )
+    let g:indent_guides_enable_on_vim_startup=1
+    let g:indent_guides_auto_colors = 0
+    autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd guibg='#202020' ctermbg=darkgrey
+    autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg='#101010'
+  endif
+else
+  let g:indent_guides_enable_on_vim_startup=1
+  let g:indent_guides_auto_colors = 1
+  autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd guibg='#202020' ctermbg=darkgrey
+  autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg='#101010'
+endif
 
 " Syntastic
 set ofu=syntaxcomplete#Complete
@@ -145,15 +173,11 @@ let g:syntastic_check_on_open=1
 " Trailing spaces stuff
 :nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 
-" " Butterfly mode
-" :command Butterfly :echo "amazing physics is going on"
-
-
-" " Windows fix
-" if !has("unix")
-"   " backspace and cursor keys wrap to previous/next line
-"   set backspace=indent,eol,start whichwrap+=<,>,[,
+" Windows fix
+if !has("unix")
+  " backspace and cursor keys wrap to previous/next line
+  set backspace=indent,eol,start whichwrap+=<,>,[,
 " else
 "   set backspace=indent,eol,start
-" endif
+endif
 
