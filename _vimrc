@@ -58,8 +58,6 @@ Bundle 'https://github.com/tpope/vim-vividchalk.git'
 
 filetype plugin indent on " required!
 
-set t_Co=256 " 256 color mode in term
-
 set autoread " ReaLoad a file if was changed outside of Vim
 
 set cc=80 " Highlight column at 80
@@ -78,6 +76,9 @@ set tabstop=2 " Number of space og a <Tab> character
 set softtabstop=2
 set shiftwidth=2 " Number of spaces use by autoindent
 set expandtab " Pressing <Tab> puts spaces, and < and > for indenting uses psaces
+
+" Display tabs and trailing spaces visually
+set list listchars=tab:\ \ ,trail:·
 
 " Commands execute automatically on an event
 
