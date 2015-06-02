@@ -77,6 +77,9 @@ set softtabstop=2
 set shiftwidth=2 " Number of spaces use by autoindent
 set expandtab " Pressing <Tab> puts spaces, and < and > for indenting uses psaces
 
+" Display tabs and trailing spaces visually
+set list listchars=tab:\ \ ,trail:·
+
 " Commands execute automatically on an event
 
 " Rules to disable expandtab in makefiles and markdown files
@@ -106,9 +109,9 @@ set ru " Ruler active
 set wildmenu
 
 " Complete options (disable preview scratch window)
-" set completeopt=menu,menuone,longest
+set completeopt=menu,menuone,longest
 " Limit popup menu height
-" set pumheight=15
+set pumheight=15
 
 
 " Config Airline and status line
