@@ -60,7 +60,16 @@ filetype plugin indent on " required!
 
 set autoread " ReaLoad a file if was changed outside of Vim
 
-set cc=80 " Highlight column at 80
+" set cc=80 " Highlight column at 80
+" Highlight characters that go over 80 columns (by drawing a border on the 81st)
+if exists('+colorcolumn')
+  set colorcolumn=81
+  highlight ColorColumn ctermbg=red
+else
+  highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+  match OverLength /\%81v.\+/
+endif
+
 set wrap " Enable line wrapping.
 
 " Use intelligent case while searching.
@@ -113,7 +122,6 @@ set completeopt=menu,menuone,longest
 " Limit popup menu height
 set pumheight=15
 
-
 " Config Airline and status line
 let g:smartusline_string_to_highlight = '(%n) %f '
 set laststatus=2 " Seperate lines for state and mode
@@ -146,7 +154,7 @@ endif
 if !has("unix")
   let g:ycm_global_ycm_extra_conf = '~/_vim/'
 else
-  let g:ycm_global_ycm_extra_conf = '~/.nvim/'
+  let g:ycm_global_ycm_extra_conf = '~/.neovim/'
 " let g:ycm_global_ycm_extra_conf = '~/.neovim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 endif
 

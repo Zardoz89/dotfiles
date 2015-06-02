@@ -1,0 +1,14 @@
+*
+
+!.config/fish/config.fish
+!.config/fish/functions/*.fish
+
+!.kde/share/apps/konsole/*
+
+!.bashrc
+!.nvimrc
+
+!.gitconfig
+!.gitignore
+
+

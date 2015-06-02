@@ -1,2 +1,4 @@
+# Some enviroment variables
 set -x GTEST_ROOT /usr/src/gtest/
-#set -x CHANGELOG_GITHUB_TOKEN "" # Here should be a valid OAuth token
+# private stuff
+set -x CHANGELOG_GITHUB_TOKEN (cat ~/.config/fish/CHANGELOG_GITHUB_TOKEN)
