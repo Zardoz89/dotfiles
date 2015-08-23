@@ -29,32 +29,34 @@ set synmaxcol=128
 
 " let Vundle manage Vundle
 " required!
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/vundle'
 
 " Must have plugins!
-Bundle 'Valloric/YouCompleteMe'
-Bundle 'bling/vim-airline'
-Bundle 'nathanaelkane/vim-indent-guides'
-Bundle 'scrooloose/syntastic'
-Bundle 'editorconfig-vim'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'rdnetto/YCM-Generator'
+Plugin 'bling/vim-airline'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'scrooloose/syntastic'
+Plugin 'editorconfig-vim'
 
 " Web stuff
-"Bundle 'pangloss/vim-javascript'
-"Bundle 'https://github.com/hail2u/vim-css3-syntax.git'
-"Bundle 'https://github.com/skammer/vim-css-color.git'
-"Bundle 'groenewege/vim-less'
+"Plugin 'pangloss/vim-javascript'
+"Plugin 'https://github.com/hail2u/vim-css3-syntax.git'
+"Plugin 'https://github.com/skammer/vim-css-color.git'
+"Plugin 'groenewege/vim-less'
 
 " Python
-"Bundle 'python.vim'
+"Plugin 'python.vim'
 
 " Markdown
-Bundle 'https://github.com/tpope/vim-markdown.git'
+Plugin 'https://github.com/tpope/vim-markdown.git'
 
 " Git
-Bundle 'https://github.com/tpope/vim-fugitive'
+Plugin 'https://github.com/tpope/vim-fugitive'
 
 " Color theme
-Bundle 'https://github.com/tpope/vim-vividchalk.git'
+Plugin 'https://github.com/tpope/vim-vividchalk.git'
+call vundle#end()            " required
 
 filetype plugin indent on " required!
 
@@ -78,7 +80,7 @@ set shiftwidth=2 " Number of spaces use by autoindent
 set expandtab " Pressing <Tab> puts spaces, and < and > for indenting uses psaces
 
 " Display tabs and trailing spaces visually
-set list listchars=tab:\ \ ,trail:·
+set list listchars=tab:\↠\ ,trail:·
 
 " Commands execute automatically on an event
 
@@ -172,8 +174,6 @@ let g:syntastic_mode_map={ 'mode': 'active',
 \ 'passive_filetypes': ['html', 'cpp'] }
 let g:syntastic_check_on_open=1
 
-" Trailing spaces stuff
-:nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 
 " Windows fix
 if !has("unix")
@@ -182,4 +182,20 @@ if !has("unix")
 " else
 "   set backspace=indent,eol,start
 endif
+
+" Functions and remaps
+
+" Trailing spaces stuff
+:nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
+
+" Append modeline after last line in buffer.
+" Use substitute() instead of printf() to handle '%%s' modeline in LaTeX
+" files.
+function! AppendModeline()
+  let l:modeline = printf(" vim: set ts=%d sw=%d tw=%d %set :",
+        \ &tabstop, &shiftwidth, &textwidth, &expandtab ? '' : 'no')
+  let l:modeline = substitute(&commentstring, "%s", l:modeline, "")
+  call append(line("$"), l:modeline)
+endfunction
+nnoremap <silent> <Leader>ml :call AppendModeline()<CR>
 
