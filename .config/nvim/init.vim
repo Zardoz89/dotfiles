@@ -234,6 +234,16 @@ let g:syntastic_check_on_open=1
 
 " Functions and remaps
 
+" arrow keys for buffer switching
+" Shift+Up = Select buffer from list
+" Shift+Down = Last-used buffer
+" Shift+Left = Previous buffer
+" Shift+Right = Next buffer
+nnoremap <S-Up>     :buffers<cr>:buffer
+nnoremap <S-down>   :b#<cr>
+nnoremap <S-Left>   :bp<cr>
+nnoremap <S-Right>  :bn<cr>
+
 " Trailing spaces stuff
 :nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 
