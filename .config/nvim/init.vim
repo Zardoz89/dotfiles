@@ -80,6 +80,7 @@ if !has("unix")
 else
   if has('nvim') " NVIM!
     let $NVIM_TUI_ENABLE_TRUE_COLOR=1 " True color!
+    set termguicolors
     let s:editor_root=expand("~/.config/nvim")
   else " Vim/GVim on Unix
     set nocompatible
@@ -121,11 +122,18 @@ if has('nvim')
   tnoremap <A-k> <C-\><C-n><C-w>k
   tnoremap <A-l> <C-\><C-n><C-w>l
 endif
+
 " Switching of buffer
-nnoremap <A-h> <C-w>h
-nnoremap <A-j> <C-w>j
-nnoremap <A-k> <C-w>k
-nnoremap <A-l> <C-w>l
+" arrow keys for buffer switching
+" Shift+Up = Select buffer from list
+" Shift+Down = Last-used buffer
+" Shift+Left = Previous buffer
+" Shift+Right = Next buffer
+nnoremap <S-Up>     :buffers<cr>:buffer
+nnoremap <S-Down>   :b#<cr>
+nnoremap <S-Left>   :bp<cr>
+nnoremap <S-Right>  :bn<cr>
+
 
 " Title
 if &term == "screen"
@@ -233,16 +241,6 @@ let g:syntastic_check_on_open=1
 
 
 " Functions and remaps
-
-" arrow keys for buffer switching
-" Shift+Up = Select buffer from list
-" Shift+Down = Last-used buffer
-" Shift+Left = Previous buffer
-" Shift+Right = Next buffer
-nnoremap <S-Up>     :buffers<cr>:buffer
-nnoremap <S-down>   :b#<cr>
-nnoremap <S-Left>   :bp<cr>
-nnoremap <S-Right>  :bn<cr>
 
 " Trailing spaces stuff
 :nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
