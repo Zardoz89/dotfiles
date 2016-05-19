@@ -40,8 +40,12 @@ set expandtab " Pressing <Tab> puts spaces, and < or > for indenting
 " Display tabs and trailing spaces visually
 set list listchars=tab:\↠\ ,trail:·
 
+set hidden " Hidde buffers instead of closing. Swtich bettwen open files without saving
+
 set splitright " Split vertically to the right.
 set splitbelow " Split horizontally below.
+
+set pastetoggle=<F2> " Disable autoindent to allow do paste from terminal
 
 set number " show line number
 set ru " Ruler active
@@ -115,6 +119,8 @@ if !has('unix')
   set backspace=indent,eol,start whichwrap+=<,>,[,
 endif
 
+let mapleader = ","
+
 " NeoVim terminal
 if has('nvim')
   tnoremap <Esc> <C-\><C-n>
@@ -133,6 +139,14 @@ nnoremap <S-Up>     :buffers<cr>:buffer
 nnoremap <S-Down>   :b#<cr>
 nnoremap <S-Left>   :bp<cr>
 nnoremap <S-Right>  :bn<cr>
+
+" Window navigation
+nnoremap <Leader><Up> <C-W><Up>
+nnoremap <Leader><Down> <C-W><Down>
+nnoremap <Leader><Left> <C-W><Left>
+nnoremap <Leader><Right> <C-W><Right>
+
+
 
 
 " Title
