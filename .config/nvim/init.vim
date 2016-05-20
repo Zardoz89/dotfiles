@@ -14,12 +14,18 @@ else
   match OverLength /\%81v.\+/
 endif
 
+" Color mode
+set t_Co=256            " 256 color mode in term
+set termguicolors       " TrueColor!
+
 " Color scheme
-if ( !has("unix") && has("gui_running") )
+try
   colors vividchalk
-else
-  colors darkblue
-endif
+catch /^Vim\%((\a\+)\)\=:E185/
+  colors darkblue   " Fallback to darkblue
+endtry
+
+let mapleader = "," " Useful leader on Spanish keyboard
 
 set wrap " Enable line wrapping.
 
@@ -40,12 +46,12 @@ set expandtab " Pressing <Tab> puts spaces, and < or > for indenting
 " Display tabs and trailing spaces visually
 set list listchars=tab:\↠\ ,trail:·
 
-set hidden " Hidde buffers instead of closing. Swtich bettwen open files without saving
+set hidden     " Not close buffer, only hide it
 
 set splitright " Split vertically to the right.
 set splitbelow " Split horizontally below.
 
-set pastetoggle=<F2> " Disable autoindent to allow do paste from terminal
+set pastetoggle=<F2> " Use F2 to do Ctrl+V from console
 
 set number " show line number
 set ru " Ruler active
@@ -71,82 +77,42 @@ autocmd FileType md set expandtab nosta sw=4 sts=4 tabstop=4
 autocmd FileType xml setl noexpandtab nosta sw=4 sts=4 tabstop=4
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 
-
 " OS and GVim/Vim/NVim stuff ***************************************************
 
 " Correct paths for vim/nvim on windows&linux and colors
-if !has("unix")
-  " Vim/GVim Windows
+if has('nvim') " NVIM!
+  let s:editor_root=expand("~/.config/nvim")
+else " VIM/GVIM
   set nocompatible
-  set t_Co=256            " 256 color mode in term
-  let s:editor_root=expand("~/vimfiles")
+  if !has("unix")
+    " Vim/GVim Windows
+    let s:editor_root=expand("~/vimfiles")
 
-else
-  if has('nvim') " NVIM!
-    let $NVIM_TUI_ENABLE_TRUE_COLOR=1 " True color!
-    set termguicolors
-    let s:editor_root=expand("~/.config/nvim")
-  else " Vim/GVim on Unix
-    set nocompatible
-    set t_Co=256            " 256 color mode in term
-
-    let s:editor_root=expand("~/.vim")
-    let runtimepath= s:editor_root . ',' . '~/.neovim/,$VIMRUNTIME'
-  endif
-endif
-
-if !has('nvim') || !has('unix')
-  " Try to use Source Code  font
-  set anti enc=utf-8
-  if has("gui_running")
-    if has("gui_gtk2")
-      set guifont=Source\ Code\ Pro\ 10
-    elseif has("gui_photon")
-      set guifont=Source\ Code\ Pro:s10
-    elseif has("gui_kde")
-      set guifont=Source\ Code\ Pro/10/-1/5/50/0/0/0/1/0
-    else
-      set guifont=Source\ Code\ Pro:h10::cDEFAULT
+    " Try to use Source Code  font
+    set anti enc=utf-8
+    if has("gui_running")
+      if has("gui_gtk2")
+        set guifont=Source\ Code\ Pro\ 10
+      elseif has("gui_photon")
+        set guifont=Source\ Code\ Pro:s10
+      elseif has("gui_kde")
+        set guifont=Source\ Code\ Pro/10/-1/5/50/0/0/0/1/0
+      else
+        set guifont=Source\ Code\ Pro:h10::cDEFAULT
+      endif
     endif
+
+    " Fix Windows stuff
+    " ugly characters on menu and welcome screen
+    set encoding=utf-8
+    " backspace and cursor keys wrap to previous/next line
+    set backspace=indent,eol,start whichwrap+=<,>,[,
+
+  else " Vim/GVim on Unix
+    let s:editor_root=expand("~/.vim")
+    let runtimepath= s:editor_root . ',' . ',$VIMRUNTIME'
   endif
 endif
-
-" Fix Windows stuff
-if !has('unix')
-  " ugly characters on menu and welcome screen
-  set encoding=utf-8
-  " backspace and cursor keys wrap to previous/next line
-  set backspace=indent,eol,start whichwrap+=<,>,[,
-endif
-
-let mapleader = ","
-
-" NeoVim terminal
-if has('nvim')
-  tnoremap <Esc> <C-\><C-n>
-  tnoremap <A-j> <C-\><C-n><C-w>j
-  tnoremap <A-k> <C-\><C-n><C-w>k
-  tnoremap <A-l> <C-\><C-n><C-w>l
-endif
-
-" Switching of buffer
-" arrow keys for buffer switching
-" Shift+Up = Select buffer from list
-" Shift+Down = Last-used buffer
-" Shift+Left = Previous buffer
-" Shift+Right = Next buffer
-nnoremap <S-Up>     :buffers<cr>:buffer
-nnoremap <S-Down>   :b#<cr>
-nnoremap <S-Left>   :bp<cr>
-nnoremap <S-Right>  :bn<cr>
-
-" Window navigation
-nnoremap <Leader><Up> <C-W><Up>
-nnoremap <Leader><Down> <C-W><Down>
-nnoremap <Leader><Left> <C-W><Left>
-nnoremap <Leader><Right> <C-W><Right>
-
-
 
 
 " Title
@@ -159,7 +125,7 @@ if &term == "screen" || &term =~ "xterm" || &term =~ "nvim"
 endif
 
 " Vundle ***********************************************************************
-let vundle_path=s:editor_root . '/bundle'
+let vundle_path=s:editor_root . '/vundle'
 let &rtp = &rtp . ',' . vundle_path . '/vundle/'
 
 " Autoinstall of vundle
@@ -183,20 +149,28 @@ call vundle#begin(vundle_path)
 Plugin 'gmarik/vundle'
 
 " Must have Plugins!
-" Plugin 'Valloric/YouCompleteMe'
-Plugin 'rdnetto/YCM-Generator'
+if !has('nvim')
+  Plugin 'Valloric/YouCompleteMe'
+  Plugin 'rdnetto/YCM-Generator'
+else
+  Plugin 'Shougo/deoplete.nvim'
+endif
 Plugin 'bling/vim-airline'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'scrooloose/syntastic'
 Plugin 'editorconfig-vim'
 
 " D Lang
-Plugin 'idanarye/vim-dutyl'
+if !has('nvim')
+  Plugin 'idanarye/vim-dutyl'
+else
+  Plugin 'landaire/deoplete-d'
+endif
 
 " Web stuff
 "Plugin 'pangloss/vim-javascript'
 "Plugin 'https://github.com/hail2u/vim-css3-syntax.git'
-"Plugin 'https://github.com/skammer/vim-css-color.git'
+Plugin 'https://github.com/skammer/vim-css-color.git'
 "Plugin 'groenewege/vim-less'
 
 " Python
@@ -210,6 +184,7 @@ Plugin 'https://github.com/tpope/vim-fugitive'
 
 " Color theme
 Plugin 'https://github.com/tpope/vim-vividchalk.git'
+
 call vundle#end()            " required
 
 filetype plugin indent on " required!
@@ -252,12 +227,38 @@ let g:syntastic_mode_map={ 'mode': 'active',
 \ 'passive_filetypes': ['html', 'cpp'] }
 let g:syntastic_check_on_open=1
 
-
+" Deoplete async autocomplete
+let g:deoplete#enable_at_startup = 1
 
 " Functions and remaps
 
-" Trailing spaces stuff
-:nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
+" NeoVim terminal
+if has('nvim')
+  tnoremap <Esc> <C-\><C-n>
+  tnoremap <A-j> <C-\><C-n><C-w>j
+  tnoremap <A-k> <C-\><C-n><C-w>k
+  tnoremap <A-l> <C-\><C-n><C-w>l
+endif
+
+" arrow keys for buffer switching
+" Shift+Up = Select buffer from list
+" Shift+Down = Last-used buffer
+" Shift+Left = Previous buffer
+" Shift+Right = Next buffer
+nnoremap <S-Up>     :buffers<cr>:buffer
+nnoremap <S-Down>   :b#<cr>
+nnoremap <S-Left>   :bp<cr>
+nnoremap <S-Right>  :bn<cr>
+
+" Window navigation
+nnoremap <Leader><Up> <C-W><Up>
+nnoremap <Leader><Down> <C-W><Down>
+nnoremap <Leader><Left> <C-W><Left>
+nnoremap <Leader><Right> <C-W><Right>
+
+" Trailing spaces & Remove tabs stuff
+nnoremap <silent> <Leader>tl :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
+nnoremap <silent> <Leader>rt :let _s=@/<Bar>:%s/\t/    /g<CR>:let @/=_s<Bar>:nohl<CR>
 
 " Append modeline after last line in buffer.
 " Use substitute() instead of printf() to handle '%%s' modeline in LaTeX
