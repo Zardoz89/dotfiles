@@ -1,29 +1,10 @@
-" Color theme
-set background=dark
-syntax on
-
 " Generic config ***************************************************************
 
-" set cc=80 " Highlight column at 80
-" Highlight characters that go over 80 columns (by drawing a border on the 81st)
-if exists('+colorcolumn')
-  set colorcolumn=81
-  highlight ColorColumn ctermbg=red
-else
-  highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-  match OverLength /\%81v.\+/
-endif
+syntax on
 
 " Color mode
 set t_Co=256            " 256 color mode in term
 set termguicolors       " TrueColor!
-
-" Color scheme
-try
-  colors vividchalk
-catch /^Vim\%((\a\+)\)\=:E185/
-  colors darkblue   " Fallback to darkblue
-endtry
 
 let mapleader = "," " Useful leader on Spanish keyboard
 
@@ -68,6 +49,24 @@ set pumheight=15
 set laststatus=2 " Seperate lines for state and mode<Paste>
 set showmode " Show current mode in the status line.
 set showcmd " Show the command in the status line.
+
+" set cc=80 " Highlight column at 80
+" Highlight characters that go over 80 columns (by drawing a border on the 81st)
+if exists('+colorcolumn')
+  set colorcolumn=81
+  highlight ColorColumn ctermbg=red
+else
+  highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+  match OverLength /\%81v.\+/
+endif
+
+" Only show cursorline in the current window and in normal mode {{{2
+augroup cline
+    au!
+    au WinLeave,InsertEnter * set nocursorline
+    au WinEnter,InsertLeave * set cursorline
+augroup END
+
 
 " Fileformats
 autocmd bufread *.less set ft=less
@@ -250,11 +249,19 @@ nnoremap <S-Down>   :b#<cr>
 nnoremap <S-Left>   :bp<cr>
 nnoremap <S-Right>  :bn<cr>
 
+"Resize splits automatically
+function! Splitresize()
+    let hmax = max([winwidth(0), 82])
+    let vmax = max([winheight(0), float2nr(&lines*0.60), 25])
+    exe "vertical resize" . (min([hmax, 140]))
+    exe "resize" . (min([vmax, 60]))
+endfunction
+
 " Window navigation
-nnoremap <Leader><Up> <C-W><Up>
-nnoremap <Leader><Down> <C-W><Down>
-nnoremap <Leader><Left> <C-W><Left>
-nnoremap <Leader><Right> <C-W><Right>
+nnoremap <Leader><Up> <C-W><Up>:call Splitresize()<cr>
+nnoremap <Leader><Down> <C-W><Down>:call Splitresize()<cr>
+nnoremap <Leader><Left> <C-W><Left>:call Splitresize()<cr>
+nnoremap <Leader><Right> <C-W><Right>:call Splitresize()<cr>
 
 " Trailing spaces & Remove tabs stuff
 nnoremap <silent> <Leader>tl :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
@@ -270,5 +277,14 @@ function! AppendModeline()
   call append(line("$"), l:modeline)
 endfunction
 nnoremap <silent> <Leader>ml :call AppendModeline()<CR><Paste>
+
+
+" Setup color scheme
+set background=dark
+try
+  colors vividchalk
+catch /^Vim\%((\a\+)\)\=:E185/
+  colors darkblue   " Fallback to darkblue
+endtry
 
 " vim: set ts=2 sw=2 tw=78 et :
