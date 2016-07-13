@@ -148,7 +148,9 @@ Plug 'scrooloose/syntastic', { 'for': ['php', 'python', 'javascript', 'css'] }
 Plug 'editorconfig-vim'
 
 " Git
-Plug 'https://github.com/tpope/vim-fugitive', {'for': 'git'}
+Plug 'tpope/vim-git', { 'for': 'git' }
+Plug 'https://github.com/tpope/vim-fugitive'
+
 
 " Languages
 Plug 'dag/vim-fish'
