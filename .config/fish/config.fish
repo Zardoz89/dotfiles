@@ -20,3 +20,5 @@ function ssh_agent --description 'launch the ssh-agent and add the id_rsa identi
     ssh-add -l | grep -q $fingerprint
         or ssh-add $identity
 end
+
+ssh_agent
