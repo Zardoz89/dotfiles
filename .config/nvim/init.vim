@@ -213,7 +213,7 @@ endif
 set ofu=syntaxcomplete#Complete
 let g:syntastic_mode_map={ 'mode': 'active',
 \ 'active_filetypes': ['asm', 'dasm', 'inc'],
-\ 'passive_filetypes': ['html', 'cpp'] }
+\ 'passive_filetypes': ['html', 'cpp', 'd'] }
 let g:syntastic_check_on_open=1
 
 " Deoplete async autocomplete
