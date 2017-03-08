@@ -1,6 +1,6 @@
 [Appearance]
 ColorScheme=NeoVim
-Font=Source Code Pro for Powerline,10,-1,5,63,0,0,0,0,0
+Font=Source Code Pro,10,-1,5,63,0,0,0,0,0
 
 [General]
 Command=/usr/local/bin/nvim
