@@ -25,7 +25,8 @@ set shiftwidth=2 " Number of spaces use by autoindent
 set expandtab " Pressing <Tab> puts spaces, and < or > for indenting
 
 " Display tabs and trailing spaces visually
-set list listchars=tab:\↠\ ,trail:·
+set list listchars=tab:\»\ ,trail:·
+set showbreak=←
 
 set hidden     " Not close buffer, only hide it
 
@@ -144,8 +145,10 @@ else
 endif
 Plug 'bling/vim-airline'
 Plug 'nathanaelkane/vim-indent-guides'
-Plug 'scrooloose/syntastic', { 'for': ['php', 'python', 'javascript', 'css'] }
+Plug 'scrooloose/syntastic', { 'for': ['php', 'python', 'javascript', 'xml', 'css'] }
 Plug 'editorconfig-vim'
+Plug 'kien/ctrlp.vim'
+Plug 'scrooloose/nerdtree'
 
 " Git
 Plug 'tpope/vim-git', { 'for': 'git' }
@@ -169,11 +172,15 @@ else
   Plug 'landaire/deoplete-d', { 'for': 'd' }
 endif
 " Web stuff
-"Plug 'https://github.com/hail2u/vim-css3-syntax.git'
-Plug 'https://github.com/skammer/vim-css-color.git'
+Plug 'https://github.com/skammer/vim-css-color.git', { 'for': ['less', 'css']}
+Plug 'gko/vim-coloresque', { 'for': ['less', 'css']}
+
+" Java
+Plug 'mikelue/vim-maven-plugin'
 
 " Color theme
 Plug 'https://github.com/tpope/vim-vividchalk.git'
+Plug 'reewr/vim-monokai-phoenix'
 
 filetype plugin indent on                   " required!
 call plug#end()
@@ -274,7 +281,8 @@ nnoremap <silent> <Leader>ml :call AppendModeline()<CR><Paste>
 " Setup color scheme
 set background=dark
 try
-  colors vividchalk
+"  colors vividchalk
+  colors monokai-phoenix
 catch /^Vim\%((\a\+)\)\=:E185/
   colors darkblue   " Fallback to darkblue
 endtry
