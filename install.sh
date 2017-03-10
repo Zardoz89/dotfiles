@@ -12,8 +12,9 @@ ln -s ${DIR}/bashrc ~/.bashrc
 
 ln -s ${DIR}/gitconfig ~/.gitconfig
 
-ln -s ${DIR}/config/nvim/init.vm ~/.config/nvim/init.vim
-ln -s ${DIR}/config/nvim/ginit.vm ~/.config/nvim/ginit.vim
+ln -s ${DIR}/config/nvim/init.vim ~/.config/nvim/init.vim
+ln -s ${DIR}/config/nvim/ginit.vim ~/.config/nvim/ginit.vim
+ln -s ${DIR}/config/nvim/init.vim ~/.vimrc
 
 ln -s ${DIR}/config/fish/config.fish ~/.config/fish/config.fish
 ln -s ${DIR}/config/fish/fishfile ~/.config/fish/fishfile
