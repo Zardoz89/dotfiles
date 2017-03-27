@@ -138,8 +138,8 @@ call plug#begin(plugged_path)
 
 " Must have Plugs!
 if !has('nvim')
-  Plug 'Valloric/YouCompleteMe', {'do', 'make'}
-  Plug 'rdnetto/YCM-Generator'
+  "Plug 'Valloric/YouCompleteMe', {'do', 'make'}
+  "Plug 'rdnetto/YCM-Generator'
 else
   Plug 'Shougo/deoplete.nvim'
 endif
@@ -237,6 +237,16 @@ if has('nvim')
   tnoremap <A-k> <C-\><C-n><C-w>k
   tnoremap <A-l> <C-\><C-n><C-w>l
 endif
+
+" Wrap visual navigation
+noremap  <buffer> <silent> <Up>   gk
+noremap  <buffer> <silent> <Down> gj
+noremap  <buffer> <silent> <Home> g<Home>
+noremap  <buffer> <silent> <End>  g<End>
+inoremap <buffer> <silent> <Up>   <C-o>gk
+inoremap <buffer> <silent> <Down> <C-o>gj
+inoremap <buffer> <silent> <Home> <C-o>g<Home>
+inoremap <buffer> <silent> <End>  <C-o>g<End>
 
 " arrow keys for buffer switching
 " Shift+Up = Select buffer from list
