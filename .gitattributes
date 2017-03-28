@@ -1,3 +1,10 @@
 # Force the following filetypes to have unix eols, so Windows does not break them
-*.* text eol=lf
+*.vim eol=lf
+*.sh eol=lf
+*.fish eol=lf
+fish* eol=lf
+*.profile eol=lf
+*.colorscheme eol=lf
+bashrc eol=lf
+gitconfig eol=lf
 
