@@ -145,10 +145,11 @@ else
 endif
 Plug 'bling/vim-airline'
 Plug 'nathanaelkane/vim-indent-guides'
-Plug 'scrooloose/syntastic', { 'for': ['php', 'python', 'javascript', 'xml', 'css'] }
+Plug 'scrooloose/syntastic', { 'for': ['php', 'python', 'javascript', 'xml', 'css', 'less', 'scss'] }
 Plug 'editorconfig-vim'
 Plug 'kien/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
+
 
 " Git
 Plug 'tpope/vim-git', { 'for': 'git' }
@@ -163,8 +164,9 @@ if has('nvim')
 endif
 Plug '74hc595/dcpu16-vim-syntax'
 "Plug 'python.vim'
-"Plug 'pangloss/vim-javascript'
-"Plug 'groenewege/vim-less'
+Plug 'alvan/vim-closetag' ", { 'for': ['xml', 'html', 'xhtml']}
+let g:closetag_filenames = "*.html,*.xhtml,*.xml"
+
 " D Lang
 if !has('nvim')
   Plug 'idanarye/vim-dutyl', { 'for': 'd' }
@@ -172,8 +174,12 @@ else
   Plug 'landaire/deoplete-d', { 'for': 'd' }
 endif
 " Web stuff
-Plug 'https://github.com/skammer/vim-css-color.git', { 'for': ['less', 'css']}
-Plug 'gko/vim-coloresque', { 'for': ['less', 'css']}
+"Plug 'https://github.com/skammer/vim-css-color.git', { 'for': ['less', 'css']}
+Plug 'gko/vim-coloresque', { 'for': ['less', 'scss', 'css', 'html']}
+Plug 'hail2u/vim-css3-syntax'
+Plug 'groenewege/vim-less', { 'for': ['less']}
+Plug 'cakebaker/scss-syntax.vim'
+Plug 'pangloss/vim-javascript'
 
 " Java
 Plug 'mikelue/vim-maven-plugin'
