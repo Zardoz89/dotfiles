@@ -209,18 +209,10 @@ let g:ycm_global_ycm_extra_conf = s:editor_root
 let g:UltiSnipsExpandTrigger="<c-n>"
 
 " Enable indent guides on boot and allow colorschemes to style them.
-if ( !has("unix") && has("gui_running") )
-  " GVim on Windows
-  let g:indent_guides_enable_on_vim_startup=1
-  let g:indent_guides_auto_colors = 0
-  autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd guibg='#202020' ctermbg=darkgrey
-  autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg='#101010'
-else
-  let g:indent_guides_enable_on_vim_startup=1
-  let g:indent_guides_auto_colors = 1
-  autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd guibg='#202020' ctermbg=darkgrey
-  autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg='#101010'
-endif
+let g:indent_guides_enable_on_vim_startup=1
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd guibg='#202020' ctermbg=darkgrey
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg='#101010'
 
 " Syntastic
 set ofu=syntaxcomplete#Complete
