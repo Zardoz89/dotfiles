@@ -183,6 +183,7 @@ Plug 'pangloss/vim-javascript'
 
 " Java
 Plug 'mikelue/vim-maven-plugin'
+Plug 'andreshazard/vim-freemarker'
 
 " Color theme
 Plug 'https://github.com/tpope/vim-vividchalk.git'
@@ -220,6 +221,7 @@ let g:syntastic_mode_map={ 'mode': 'active',
 \ 'active_filetypes': ['asm', 'dasm', 'inc'],
 \ 'passive_filetypes': ['html', 'cpp', 'd'] }
 let g:syntastic_check_on_open=1
+let g:syntastic_javascript_checkers=['eslint']
 
 " Deoplete async autocomplete
 let g:deoplete#enable_at_startup = 1
