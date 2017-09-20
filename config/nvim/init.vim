@@ -138,6 +138,7 @@ call plug#begin(plugged_path)
 
 " Must have Plugs!
 if !has('nvim')
+  Plug 'Shougo/neocomplete'
   "Plug 'Valloric/YouCompleteMe', {'do', 'make'}
   "Plug 'rdnetto/YCM-Generator'
 else
@@ -146,24 +147,21 @@ endif
 Plug 'bling/vim-airline'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'scrooloose/syntastic', { 'for': ['php', 'python', 'javascript', 'xml', 'css', 'less', 'scss'] }
-Plug 'editorconfig-vim'
+Plug 'editorconfig/editorconfig-vim'
 Plug 'kien/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
 
-
 " Git
 Plug 'tpope/vim-git', { 'for': 'git' }
-Plug 'https://github.com/tpope/vim-fugitive'
-
+Plug 'tpope/vim-fugitive'
 
 " Languages
 Plug 'dag/vim-fish'
-Plug 'https://github.com/tpope/vim-markdown.git', { 'for': 'markdown' }
+Plug 'tpope/vim-markdown', { 'for': 'markdown' }
 if has('nvim')
   Plug 'euclio/vim-markdown-composer', { 'for': 'markdown' }
 endif
-Plug '74hc595/dcpu16-vim-syntax'
-"Plug 'python.vim'
+"Plug '74hc595/dcpu16-vim-syntax'
 Plug 'alvan/vim-closetag' ", { 'for': ['xml', 'html', 'xhtml']}
 let g:closetag_filenames = "*.html,*.xhtml,*.xml"
 
@@ -173,20 +171,20 @@ if !has('nvim')
 else
   Plug 'landaire/deoplete-d', { 'for': 'd' }
 endif
+
 " Web stuff
-"Plug 'https://github.com/skammer/vim-css-color.git', { 'for': ['less', 'css']}
 Plug 'gko/vim-coloresque', { 'for': ['less', 'scss', 'css', 'html']}
 Plug 'hail2u/vim-css3-syntax'
 Plug 'groenewege/vim-less', { 'for': ['less']}
 Plug 'cakebaker/scss-syntax.vim'
-Plug 'pangloss/vim-javascript'
+Plug 'pangloss/vim-javascript', { 'for': 'javascript'}
 
 " Java
 Plug 'mikelue/vim-maven-plugin'
 Plug 'andreshazard/vim-freemarker'
 
 " Color theme
-Plug 'https://github.com/tpope/vim-vividchalk.git'
+Plug 'tpope/vim-vividchalk'
 Plug 'reewr/vim-monokai-phoenix'
 
 filetype plugin indent on                   " required!
@@ -202,9 +200,8 @@ let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#branch#enabled=1
 let g:airline#extensions#syntastic#enabled=1
 
-" YouCompleteMe
-let g:ycm_global_ycm_extra_conf = s:editor_root
-" let g:ycm_global_ycm_extra_conf = vundle_path . '/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+" JavaScript & JDoc
+let g:javascript_plugin_jsdoc = 1
 
 " Ultimate Snips
 let g:UltiSnipsExpandTrigger="<c-n>"
@@ -223,8 +220,16 @@ let g:syntastic_mode_map={ 'mode': 'active',
 let g:syntastic_check_on_open=1
 let g:syntastic_javascript_checkers=['eslint']
 
-" Deoplete async autocomplete
-let g:deoplete#enable_at_startup = 1
+" Autocomplete
+if !has('nvim')
+  autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+  autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+  autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+  autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+else
+  " Deoplete async autocomplete
+  let g:deoplete#enable_at_startup = 1
+endif
 
 
 
