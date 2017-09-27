@@ -142,7 +142,7 @@ if !has('nvim')
   "Plug 'Valloric/YouCompleteMe', {'do', 'make'}
   "Plug 'rdnetto/YCM-Generator'
 else
-  Plug 'Shougo/deoplete.nvim'
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 endif
 Plug 'bling/vim-airline'
 Plug 'nathanaelkane/vim-indent-guides'
@@ -203,9 +203,6 @@ let g:airline#extensions#syntastic#enabled=1
 " JavaScript & JDoc
 let g:javascript_plugin_jsdoc = 1
 
-" Ultimate Snips
-let g:UltiSnipsExpandTrigger="<c-n>"
-
 " Enable indent guides on boot and allow colorschemes to style them.
 let g:indent_guides_enable_on_vim_startup=1
 let g:indent_guides_auto_colors = 0
@@ -229,6 +226,8 @@ if !has('nvim')
 else
   " Deoplete async autocomplete
   let g:deoplete#enable_at_startup = 1
+  inoremap <silent><expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+  inoremap <silent><expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
 endif
 
 
