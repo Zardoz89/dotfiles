@@ -18,3 +18,6 @@
   default = simple
 [receive]
   fsckobjects = true
+[filter "dosify"]
+  clean = unix2dos
+  smudge = unix2dos
