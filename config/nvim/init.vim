@@ -3,8 +3,11 @@
 syntax on
 
 " Color mode
-set t_Co=256            " 256 color mode in term
-set termguicolors       " TrueColor!
+if (has("termguicolors"))
+  set termguicolors       " TrueColor!
+else
+  set t_Co=256            " 256 color mode in term
+endif
 
 let mapleader = "," " Useful leader on Spanish keyboard
 
@@ -139,8 +142,6 @@ call plug#begin(plugged_path)
 " Must have Plugs!
 if !has('nvim')
   Plug 'Shougo/neocomplete'
-  "Plug 'Valloric/YouCompleteMe', {'do', 'make'}
-  "Plug 'rdnetto/YCM-Generator'
 else
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 endif
@@ -167,7 +168,6 @@ let g:closetag_filenames = "*.html,*.xhtml,*.xml"
 
 " D Lang
 if !has('nvim')
-  Plug 'idanarye/vim-dutyl', { 'for': 'd' }
 else
   Plug 'landaire/deoplete-d', { 'for': 'd' }
 endif
@@ -178,13 +178,13 @@ Plug 'hail2u/vim-css3-syntax'
 Plug 'groenewege/vim-less', { 'for': ['less']}
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'pangloss/vim-javascript', { 'for': 'javascript'}
+Plug 'heavenshell/vim-jsdoc', { 'for': 'javascript' }
 
 " Java
 Plug 'mikelue/vim-maven-plugin'
 Plug 'andreshazard/vim-freemarker'
 
 " Color theme
-Plug 'tpope/vim-vividchalk'
 Plug 'reewr/vim-monokai-phoenix'
 
 filetype plugin indent on                   " required!
@@ -233,6 +233,11 @@ endif
 
 
 " Functions and remaps
+
+" Ctrl-S to save file
+nmap <C-s> :w<CR>
+vmap <C-s> <Esc><c-s>gv
+imap <C-s> <Esc><c-s>
 
 " NeoVim terminal
 if has('nvim')
@@ -295,7 +300,6 @@ nnoremap <silent> <Leader>ml :call AppendModeline()<CR><Paste>
 " Setup color scheme
 set background=dark
 try
-"  colors vividchalk
   colors monokai-phoenix
 catch /^Vim\%((\a\+)\)\=:E185/
   colors darkblue   " Fallback to darkblue

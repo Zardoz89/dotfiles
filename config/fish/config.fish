@@ -3,7 +3,7 @@ set -x CHANGELOG_GITHUB_TOKEN (cat ~/.config/fish/CHANGELOG_GITHUB_TOKEN)
 
 # Alias                                                                                                           
 # Open neovim on a Konsole window                                                                                 
-alias kvim="konsole --profile nvim -e nvim" 
+#alias kvim="konsole --profile nvim -e nvim" 
 
 function ssh_agent --description 'launch the ssh-agent and add the id_rsa identity'
     if begin

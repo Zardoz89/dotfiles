@@ -1,15 +1,25 @@
 [Appearance]
 ColorScheme=NeoVim
-Font=Source Code Pro,10,-1,5,63,0,0,0,0,0
+Font=Hack,10,-1,5,50,0,0,0,0,0
 
 [General]
 Command=/usr/local/bin/nvim
 Environment=TERM=xterm-256color
-Icon=accessories-text-editor
+Icon=gvim
+LocalTabTitleFormat=%w
 Name=neovim
 Parent=FALLBACK/
+RemoteTabTitleFormat=( %w )
 TerminalColumns=100
 
 [Interaction Options]
 MouseWheelZoomEnabled=false
 UnderlineLinksEnabled=false
+
+[Scrolling]
+HistoryMode=0
+
+[Terminal Features]
+BidiRenderingEnabled=false
+BlinkingCursorEnabled=true
+FlowControlEnabled=false
