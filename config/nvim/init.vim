@@ -79,6 +79,10 @@ autocmd FileType make set noexpandtab nosta sw=4 sts=4 tabstop=4
 autocmd FileType md set expandtab nosta sw=4 sts=4 tabstop=4
 autocmd FileType xml setl noexpandtab nosta sw=4 sts=4 tabstop=4
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
+autocmd FileType css,sass,scss setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 " OS and GVim/Vim/NVim stuff ***************************************************
 
@@ -168,18 +172,23 @@ Plug 'alvan/vim-closetag' ", { 'for': ['xml', 'html', 'xhtml']}
 let g:closetag_filenames = "*.html,*.xhtml,*.xml"
 
 " D Lang
-if !has('nvim')
-else
+if has('nvim')
   Plug 'landaire/deoplete-d', { 'for': 'd' }
 endif
 
 " Web stuff
-Plug 'gko/vim-coloresque', { 'for': ['less', 'scss', 'css', 'html']}
+Plug 'chrisbra/Colorizer', { 'for': ['less', 'scss', 'css', 'html']}
+let g:colorizer_auto_filetype='css,less,scss,html'
+
 Plug 'hail2u/vim-css3-syntax'
 Plug 'groenewege/vim-less', { 'for': ['less']}
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'pangloss/vim-javascript', { 'for': 'javascript'}
 Plug 'heavenshell/vim-jsdoc', { 'for': 'javascript' }
+if has('nvim')
+  Plug 'carlitux/deoplete-ternjs'
+  Plug 'ponko2/deoplete-fish'
+endif
 
 " Java
 Plug 'mikelue/vim-maven-plugin'
@@ -220,12 +229,7 @@ let g:syntastic_check_on_open=1
 let g:syntastic_javascript_checkers=['eslint']
 
 " Autocomplete
-if !has('nvim')
-  autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-  autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-  autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-  autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-else
+if has('nvim')
   " Deoplete async autocomplete
   let g:deoplete#enable_at_startup = 1
   let g:deoplete#omni_patterns = {}
