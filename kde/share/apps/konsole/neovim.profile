@@ -3,7 +3,7 @@ ColorScheme=NeoVim
 Font=Hack,10,-1,5,50,0,0,0,0,0
 
 [General]
-Command=/usr/local/bin/nvim
+Command=/usr/bin/nvim
 Environment=TERM=xterm-256color
 Icon=gvim
 LocalTabTitleFormat=%w

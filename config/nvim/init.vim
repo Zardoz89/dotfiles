@@ -78,7 +78,7 @@ autocmd bufread *.md set ft=markdown
 autocmd FileType make set noexpandtab nosta sw=4 sts=4 tabstop=4
 autocmd FileType md set expandtab nosta sw=4 sts=4 tabstop=4
 autocmd FileType xml setl noexpandtab nosta sw=4 sts=4 tabstop=4
-autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType java setlocal omnifunc=javacomplete#Complete
 
 " OS and GVim/Vim/NVim stuff ***************************************************
 
@@ -147,10 +147,11 @@ else
 endif
 Plug 'bling/vim-airline'
 Plug 'nathanaelkane/vim-indent-guides'
-Plug 'scrooloose/syntastic', { 'for': ['php', 'python', 'javascript', 'xml', 'css', 'less', 'scss'] }
+Plug 'scrooloose/syntastic', { 'for': ['php', 'java', 'javascript', 'xml', 'css', 'less', 'scss'] }
 Plug 'editorconfig/editorconfig-vim'
 Plug 'kien/ctrlp.vim'
-Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'neomake/neomake'
 
 " Git
 Plug 'tpope/vim-git', { 'for': 'git' }
@@ -182,6 +183,7 @@ Plug 'heavenshell/vim-jsdoc', { 'for': 'javascript' }
 
 " Java
 Plug 'mikelue/vim-maven-plugin'
+Plug 'artur-shaik/vim-javacomplete2'
 Plug 'andreshazard/vim-freemarker'
 
 " Color theme
@@ -226,6 +228,11 @@ if !has('nvim')
 else
   " Deoplete async autocomplete
   let g:deoplete#enable_at_startup = 1
+  let g:deoplete#omni_patterns = {}
+  let g:deoplete#omni_patterns.java = '[^. *\t]\.\w*'
+  let g:deoplete#sources = {}
+  let g:deoplete#sources._ = []
+  let g:deoplete#file#enable_buffer_path = 1
   inoremap <silent><expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
   inoremap <silent><expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
 endif

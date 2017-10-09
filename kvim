@@ -3,6 +3,6 @@
 thisFile=$(readlink -f $0);
 appDir="$(dirname $thisFile)/..";
 
-unset VTE_VERSION
-konsole --profile nvim -e nvim "$@" &
+#unset VTE_VERSION
+konsole --profile neovim -e nvim "$@" &
 
