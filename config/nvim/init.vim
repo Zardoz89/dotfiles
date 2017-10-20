@@ -144,22 +144,23 @@ endif
 call plug#begin(plugged_path)
 
 " Must have Plugs!
+Plug 'bling/vim-airline'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'kien/ctrlp.vim'
+  Plug 'w0rp/ale'
+"Plug 'neomake/neomake'
 if !has('nvim')
   Plug 'Shougo/neocomplete'
 else
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 endif
-Plug 'bling/vim-airline'
-Plug 'nathanaelkane/vim-indent-guides'
-Plug 'scrooloose/syntastic', { 'for': ['php', 'java', 'javascript', 'xml', 'css', 'less', 'scss'] }
-Plug 'editorconfig/editorconfig-vim'
-Plug 'kien/ctrlp.vim'
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'neomake/neomake'
 
 " Git
 Plug 'tpope/vim-git', { 'for': 'git' }
 Plug 'tpope/vim-fugitive'
+"Plug 'airblade/vim-gitgutter'
 
 " Languages
 Plug 'dag/vim-fish'
@@ -209,7 +210,6 @@ set laststatus=2 " Seperate lines for state and mode
 let g:airline_powerline_fonts=1 " Powerline simbols. Hermit font support it
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#branch#enabled=1
-let g:airline#extensions#syntastic#enabled=1
 
 " JavaScript & JDoc
 let g:javascript_plugin_jsdoc = 1
@@ -220,13 +220,8 @@ let g:indent_guides_auto_colors = 0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd guibg='#202020' ctermbg=darkgrey
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg='#101010'
 
-" Syntastic
-set ofu=syntaxcomplete#Complete
-let g:syntastic_mode_map={ 'mode': 'active',
-\ 'active_filetypes': ['asm', 'dasm', 'inc'],
-\ 'passive_filetypes': ['html', 'cpp', 'd'] }
-let g:syntastic_check_on_open=1
-let g:syntastic_javascript_checkers=['eslint']
+" Ale async syntax 
+let g:airline#extensions#ale#enabled = 1
 
 " Autocomplete
 if has('nvim')
