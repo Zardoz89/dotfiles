@@ -160,7 +160,7 @@ endif
 " Git
 Plug 'tpope/vim-git', { 'for': 'git' }
 Plug 'tpope/vim-fugitive'
-"Plug 'airblade/vim-gitgutter'
+Plug 'airblade/vim-gitgutter', { 'commit': '438bff6a637acc6ada43820494302b29e07e418b'}
 
 " Languages
 Plug 'dag/vim-fish'
@@ -220,7 +220,7 @@ let g:indent_guides_auto_colors = 0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd guibg='#202020' ctermbg=darkgrey
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg='#101010'
 
-" Ale async syntax 
+" Ale async syntax
 let g:airline#extensions#ale#enabled = 1
 
 " Autocomplete
