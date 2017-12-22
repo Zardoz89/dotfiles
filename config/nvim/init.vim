@@ -213,6 +213,8 @@ let g:airline#extensions#branch#enabled=1
 
 " JavaScript & JDoc
 let g:javascript_plugin_jsdoc = 1
+" Java Syntax colors
+let java_highlight_functions = 1
 
 " Enable indent guides on boot and allow colorschemes to style them.
 let g:indent_guides_enable_on_vim_startup=1
@@ -301,6 +303,10 @@ function! AppendModeline()
   call append(line("$"), l:modeline)
 endfunction
 nnoremap <silent> <Leader>ml :call AppendModeline()<CR><Paste>
+
+" Keep selected block when change indentation level
+vnoremap < <gv
+vnoremap > >gv
 
 
 " Setup color scheme
