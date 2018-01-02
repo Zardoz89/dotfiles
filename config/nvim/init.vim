@@ -242,6 +242,12 @@ endif
 
 " Functions and remaps
 
+" Shift+Insert on neovim-gtk
+if exists('g:GtkGuiLoaded')
+  map <silent> <S-Insert> "+p
+  imap <silent> <S-Insert> <Esc>"+pa
+endif
+
 " Ctrl-S to save file
 nmap <C-s> :w<CR>
 vmap <C-s> <Esc><c-s>gv
