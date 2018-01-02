@@ -1,5 +1,3 @@
-# private stuff
-set -x CHANGELOG_GITHUB_TOKEN (cat ~/.config/fish/CHANGELOG_GITHUB_TOKEN)
 
 # Alias                                                                                                           
 
@@ -20,3 +18,6 @@ function ssh_agent --description 'launch the ssh-agent and add the id_rsa identi
 end
 
 ssh_agent
+
+source $HOME/.cargo/env
+
