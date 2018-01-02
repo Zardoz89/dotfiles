@@ -1,7 +1,7 @@
 [Appearance]
 AntiAliasFonts=true
 ColorScheme=Mio
-Font=Hack,10,-1,5,50,0,0,0,0,0
+Font=Fira Code,10,-1,5,50,0,0,0,0,0,Regular
 
 [Cursor Options]
 CustomCursorColor=255,255,255
