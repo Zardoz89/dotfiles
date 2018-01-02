@@ -28,8 +28,8 @@ set shiftwidth=2 " Number of spaces use by autoindent
 set expandtab " Pressing <Tab> puts spaces, and < or > for indenting
 
 " Display tabs and trailing spaces visually
-set list listchars=tab:\»\ ,trail:·
-set showbreak=←
+set list listchars=tab:‣\ ,nbsp:␣,extends:▶,trail:·
+let &showbreak = '↳ '"'←'
 
 set hidden     " Not close buffer, only hide it
 
