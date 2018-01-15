@@ -100,10 +100,6 @@ else " VIM/GVIM
     if has("gui_running")
       if has("gui_gtk2")
         set guifont=Source\ Code\ Pro\ 10
-      elseif has("gui_photon")
-        set guifont=Source\ Code\ Pro:s10
-      elseif has("gui_kde")
-        set guifont=Source\ Code\ Pro/10/-1/5/50/0/0/0/1/0
       else
         set guifont=Source\ Code\ Pro:h10::cDEFAULT
       endif
@@ -147,7 +143,8 @@ call plug#begin(plugged_path)
 Plug 'bling/vim-airline'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'kien/ctrlp.vim'
   Plug 'w0rp/ale'
 "Plug 'neomake/neomake'
@@ -203,6 +200,8 @@ filetype plugin indent on                   " required!
 call plug#end()
 
 " Vundle ***********************************************************************
+
+" NERD tree
 
 " Config Airline and status line
 let g:smartusline_string_to_highlight = '(%n) %f '
@@ -281,19 +280,11 @@ nnoremap <S-Down>   :b#<cr>
 nnoremap <S-Left>   :bp<cr>
 nnoremap <S-Right>  :bn<cr>
 
-"Resize splits automatically
-function! Splitresize()
-    let hmax = max([winwidth(0), 82])
-    let vmax = max([winheight(0), float2nr(&lines*0.60), 25])
-    exe "vertical resize" . (min([hmax, 140]))
-    exe "resize" . (min([vmax, 60]))
-endfunction
-
 " Window navigation
-nnoremap <Leader><Up> <C-W><Up>:call Splitresize()<cr>
-nnoremap <Leader><Down> <C-W><Down>:call Splitresize()<cr>
-nnoremap <Leader><Left> <C-W><Left>:call Splitresize()<cr>
-nnoremap <Leader><Right> <C-W><Right>:call Splitresize()<cr>
+nnoremap <Leader><Up>     <C-W><Up>
+nnoremap <Leader><Down>   <C-W><Down>
+nnoremap <Leader><Left>   <C-W><Left>
+nnoremap <Leader><Right>  <C-W><Right>
 
 " Trailing spaces & Remove tabs stuff
 nnoremap <silent> <Leader>tl :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>

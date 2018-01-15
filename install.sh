@@ -16,26 +16,18 @@ ln -s ${DIR}/config/nvim/init.vim ~/.config/nvim/init.vim
 ln -s ${DIR}/config/nvim/ginit.vim ~/.config/nvim/ginit.vim
 ln -s ${DIR}/config/nvim/init.vim ~/.vimrc
 
-ln -s ${DIR}/kvim ~/kvim
-
 ln -s ${DIR}/config/fish/config.fish ~/.config/fish/config.fish
 ln -s ${DIR}/config/fish/fishfile ~/.config/fish/fishfile
 
 ln -s ${DIR}/kde/share/apps/konsole/WhiteOnBlack.colorscheme ~/.kde/share/apps/konsole/WhiteOnBlack.colorscheme
 ln -s ${DIR}/kde/share/apps/konsole/Mio.colorscheme          ~/.kde/share/apps/konsole/Mio.colorscheme
-ln -s ${DIR}/kde/share/apps/konsole/NeoVim.colorscheme       ~/.kde/share/apps/konsole/NeoVim.colorscheme
-ln -s ${DIR}/kde/share/apps/konsole/neovim.profile           ~/.kde/share/apps/konsole/neovim.profile
 ln -s ${DIR}/kde/share/apps/konsole/Shell.profile            ~/.kde/share/apps/konsole/Shell.profile
 ln -s ${DIR}/kde/share/apps/konsole/Fish.profile             ~/.kde/share/apps/konsole/Fish.profile
 
 
 ln -s ${DIR}/kde/share/apps/konsole/WhiteOnBlack.colorscheme ~/.local/share/konsole/WhiteOnBlack.colorscheme
 ln -s ${DIR}/kde/share/apps/konsole/Mio.colorscheme          ~/.local/share/konsole/Mio.colorscheme
-ln -s ${DIR}/kde/share/apps/konsole/NeoVim.colorscheme       ~/.local/share/konsole/NeoVim.colorscheme
-ln -s ${DIR}/kde/share/apps/konsole/neovim.profile           ~/.local/share/konsole/neovim.profile
 ln -s ${DIR}/kde/share/apps/konsole/Shell.profile            ~/.local/share/konsole/Shell.profile
 ln -s ${DIR}/kde/share/apps/konsole/Fish.profile             ~/.local/share/konsole/Fish.profile
-
-ln -s ${DIR}/local/share/applications/nvim.desktop           ~/.local/share/applications/nvim.desktop
 
 
