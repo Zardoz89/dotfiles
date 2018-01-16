@@ -54,15 +54,8 @@ set laststatus=2 " Seperate lines for state and mode<Paste>
 set showmode " Show current mode in the status line.
 set showcmd " Show the command in the status line.
 
-" set cc=80 " Highlight column at 80
-" Highlight characters that go over 80 columns (by drawing a border on the 81st)
-if exists('+colorcolumn')
-  set colorcolumn=81
-  highlight ColorColumn ctermbg=red
-else
-  highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-  match OverLength /\%81v.\+/
-endif
+" Show vertical guides at 80 and 120, highlight characters that go over 120 columns (by drawing a border on the 121st)
+set colorcolumn=80,120
 
 " Only show cursorline in the current window and in normal mode {{{2
 augroup cline
@@ -202,6 +195,10 @@ call plug#end()
 " Vundle ***********************************************************************
 
 " NERD tree
+let NERDTreeShowBookmarks=1
+let NERDTreeHijackNetrw=1
+let NERDTreeNaturalSort=1
+let NERDTreeChDirMode=1
 
 " Config Airline and status line
 let g:smartusline_string_to_highlight = '(%n) %f '
@@ -313,5 +310,10 @@ try
 catch /^Vim\%((\a\+)\)\=:E185/
   colors darkblue   " Fallback to darkblue
 endtry
+
+" Override colorcolumn color and add overlength when the line is over 120 characters
+highlight ColorColumn ctermbg=red ctermfg=white guibg=#351818
+highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+match OverLength /\%121v.\+/
 
 " vim: set ts=2 sw=2 tw=78 et :
