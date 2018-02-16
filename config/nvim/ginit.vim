@@ -24,9 +24,9 @@ let s:fonts = [
 " let &guifont = g:luc#gui#normalfonts
 
 if exists('g:GtkGuiLoaded') " neovim-gtk
-  call rpcnotify(1, 'Gui', 'Font', s:fonts[0][0].' '.s:fonts[0][1])
   let g:GuiInternalClipboard = 1
   call rpcnotify(1, 'Gui', 'Option', 'Tabline', 0)
+  call rpcnotify(1, 'Gui', 'Font', s:fonts[0][0].' '.s:fonts[0][1])
 else                |
 command -nargs=? Guifont call luc#gui#nvim_qt_guifont(<q-args>)
   augroup LucNvimGUIFont

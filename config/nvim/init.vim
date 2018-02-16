@@ -156,7 +156,12 @@ Plug 'airblade/vim-gitgutter', { 'commit': '438bff6a637acc6ada43820494302b29e07e
 Plug 'dag/vim-fish'
 Plug 'tpope/vim-markdown', { 'for': 'markdown' }
 if has('nvim')
-  Plug 'euclio/vim-markdown-composer', { 'for': 'markdown' }
+  function! BuildComposer(info)
+    if a:info.status != 'unchanged' || a:info.force
+      !cargo build --release
+    endif
+  endfunction
+  Plug 'euclio/vim-markdown-composer', {'do': function('BuildComposer') }
 endif
 "Plug '74hc595/dcpu16-vim-syntax'
 Plug 'alvan/vim-closetag' ", { 'for': ['xml', 'html', 'xhtml']}
@@ -233,7 +238,6 @@ if has('nvim')
   inoremap <silent><expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
   inoremap <silent><expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
 endif
-
 
 
 " Functions and remaps
