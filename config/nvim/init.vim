@@ -139,7 +139,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'kien/ctrlp.vim'
-  Plug 'w0rp/ale'
+Plug 'w0rp/ale'
 "Plug 'neomake/neomake'
 if !has('nvim')
   Plug 'Shougo/neocomplete'
@@ -191,6 +191,9 @@ Plug 'mikelue/vim-maven-plugin'
 Plug 'artur-shaik/vim-javacomplete2'
 Plug 'andreshazard/vim-freemarker'
 
+" Eclim -> Control Eclipse from VIm
+"Plug '~/.config/nvim/bundle/eclim'
+
 " Color theme
 Plug 'reewr/vim-monokai-phoenix'
 
@@ -211,6 +214,7 @@ set laststatus=2 " Seperate lines for state and mode
 let g:airline_powerline_fonts=1 " Powerline simbols. Hermit font support it
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#branch#enabled=1
+let g:airline#extensions#branch#format = 2
 
 " JavaScript & JDoc
 let g:javascript_plugin_jsdoc = 1
