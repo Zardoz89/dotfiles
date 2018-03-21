@@ -147,6 +147,7 @@ else
 endif
 if has('nvim')
   Plug 'kassio/neoterm'
+  set shell=/usr/bin/fish
   let g:neoterm_shell = "fish"
 endif
 
