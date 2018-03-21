@@ -164,8 +164,8 @@ if has('nvim')
   Plug 'euclio/vim-markdown-composer', {'do': function('BuildComposer') }
 endif
 "Plug '74hc595/dcpu16-vim-syntax'
-Plug 'alvan/vim-closetag' ", { 'for': ['xml', 'html', 'xhtml']}
-let g:closetag_filenames = "*.html,*.xhtml,*.xml"
+Plug 'alvan/vim-closetag'
+let g:closetag_filenames = "*.html,*.xhtml,*.xml,*.vm,*.ftl"
 
 " D Lang
 if has('nvim')
