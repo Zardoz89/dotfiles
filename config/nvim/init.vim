@@ -140,17 +140,20 @@ Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'kien/ctrlp.vim'
 Plug 'w0rp/ale'
-"Plug 'neomake/neomake'
 if !has('nvim')
   Plug 'Shougo/neocomplete'
 else
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 endif
+if has('nvim')
+  Plug 'kassio/neoterm'
+  let g:neoterm_shell = "fish"
+endif
 
 " Git
 Plug 'tpope/vim-git', { 'for': 'git' }
 Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter', { 'commit': '438bff6a637acc6ada43820494302b29e07e418b'}
+Plug 'airblade/vim-gitgutter' ", { 'commit': '438bff6a637acc6ada43820494302b29e07e418b'}
 
 " Languages
 Plug 'dag/vim-fish'
@@ -166,6 +169,7 @@ endif
 "Plug '74hc595/dcpu16-vim-syntax'
 Plug 'alvan/vim-closetag'
 let g:closetag_filenames = "*.html,*.xhtml,*.xml,*.vm,*.ftl"
+Plug 'jiangmiao/auto-pairs'
 
 " D Lang
 if has('nvim')
@@ -176,9 +180,13 @@ endif
 Plug 'chrisbra/Colorizer', { 'for': ['less', 'scss', 'css', 'html']}
 let g:colorizer_auto_filetype='css,less,scss,html'
 
+Plug 'othree/html5.vim', { 'for': ['html', 'xhtml', 'vm', 'ftl'] }
+
 Plug 'hail2u/vim-css3-syntax'
 Plug 'groenewege/vim-less', { 'for': ['less']}
-Plug 'cakebaker/scss-syntax.vim'
+Plug 'cakebaker/scss-syntax.vim', { 'for': ['scss'] }
+Plug 'othree/csscomplete.vim', { 'for': ['less', 'scss', 'css'] }
+
 Plug 'pangloss/vim-javascript', { 'for': 'javascript'}
 Plug 'heavenshell/vim-jsdoc', { 'for': 'javascript' }
 if has('nvim')
