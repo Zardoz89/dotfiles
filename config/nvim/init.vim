@@ -50,7 +50,7 @@ set completeopt=menu,menuone,longest
 set pumheight=15
 
 " Status bar
-set laststatus=2 " Seperate lines for state and mode<Paste>
+set laststatus=2 " Seperate lines for state and mode
 set showmode " Show current mode in the status line.
 set showcmd " Show the command in the status line.
 
@@ -92,9 +92,9 @@ else " VIM/GVIM
     set anti enc=utf-8
     if has("gui_running")
       if has("gui_gtk2")
-        set guifont=Source\ Code\ Pro\ 10
+        set guifont=Fira\ Code\ 10
       else
-        set guifont=Source\ Code\ Pro:h10::cDEFAULT
+        set guifont=Fira\ Code:h10::cDEFAULT
       endif
     endif
 
@@ -154,7 +154,7 @@ endif
 " Git
 Plug 'tpope/vim-git', { 'for': 'git' }
 Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter' ", { 'commit': '438bff6a637acc6ada43820494302b29e07e418b'}
+Plug 'airblade/vim-gitgutter'
 
 " Languages
 Plug 'dag/vim-fish'
@@ -167,7 +167,6 @@ if has('nvim')
   endfunction
   Plug 'euclio/vim-markdown-composer', {'do': function('BuildComposer') }
 endif
-"Plug '74hc595/dcpu16-vim-syntax'
 Plug 'alvan/vim-closetag'
 let g:closetag_filenames = "*.html,*.xhtml,*.xml,*.vm,*.ftl"
 Plug 'jiangmiao/auto-pairs'
@@ -255,12 +254,6 @@ endif
 
 " Functions and remaps
 
-" Shift+Insert on neovim-gtk
-if exists('g:GtkGuiLoaded')
-  map <silent> <S-Insert> "+p
-  imap <silent> <S-Insert> <Esc>"+pa
-endif
-
 " Ctrl-S to save file
 nmap <C-s> :w<CR>
 vmap <C-s> <Esc><c-s>gv
@@ -328,6 +321,7 @@ catch /^Vim\%((\a\+)\)\=:E185/
   colors darkblue   " Fallback to darkblue
 endtry
 
+" This must be AFTER setting color scheme
 " Override colorcolumn color and add overlength when the line is over 120 characters
 highlight ColorColumn ctermbg=red ctermfg=white guibg=#351818
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929

@@ -1,7 +1,7 @@
 " font setup for gvim by luc
 
 let s:fonts = [
-      \ ['Fira Code',                     10, 25],
+      \ ['Fira Code',                10, 25],
       \ ['Hack',                     10, 25],
       \ ['Source Code Pro',          10, 25],
       \ ['Monospace',                10, 25],
@@ -28,7 +28,7 @@ if exists('g:GtkGuiLoaded') " neovim-gtk
   call rpcnotify(1, 'Gui', 'Option', 'Tabline', 0)
   call rpcnotify(1, 'Gui', 'Font', s:fonts[0][0].' '.s:fonts[0][1])
 else                |
-command -nargs=? Guifont call luc#gui#nvim_qt_guifont(<q-args>)
+  command -nargs=? Guifont call luc#gui#nvim_qt_guifont(<q-args>)
   augroup LucNvimGUIFont
     autocmd VimEnter *
       \ if has('nvim') && has('gui_running')                |
@@ -36,3 +36,11 @@ command -nargs=? Guifont call luc#gui#nvim_qt_guifont(<q-args>)
       \ endif
   augroup END
 endif
+
+" Shift+Insert on neovim-gtk
+if exists('g:GtkGuiLoaded')
+  map <silent> <S-Insert> "+p
+  imap <silent> <S-Insert> <Esc>"+pa
+endif
+
+
