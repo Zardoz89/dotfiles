@@ -194,6 +194,8 @@ if has('nvim')
   Plug 'ponko2/deoplete-fish'
 endif
 
+Plug 'posva/vim-vue', {'for': 'vue'}
+
 " Java
 Plug 'mikelue/vim-maven-plugin'
 Plug 'artur-shaik/vim-javacomplete2'
