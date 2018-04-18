@@ -20,7 +20,7 @@
     default = simple
 [receive]
     fsckobjects = true
-[http]
+[http "https://git.digibis.com"]
     sslverify = false
 [filter "dosify"]
     clean = unix2dos
