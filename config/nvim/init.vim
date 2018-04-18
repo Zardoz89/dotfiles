@@ -168,7 +168,7 @@ if has('nvim')
   Plug 'euclio/vim-markdown-composer', {'do': function('BuildComposer') }
 endif
 Plug 'alvan/vim-closetag'
-let g:closetag_filenames = "*.html,*.xhtml,*.xml,*.vm,*.ftl"
+let g:closetag_filenames = "*.html,*.xhtml,*.xml,*.vm,*.ftl,*.vue"
 Plug 'jiangmiao/auto-pairs'
 
 " D Lang
@@ -177,18 +177,18 @@ if has('nvim')
 endif
 
 " Web stuff
-Plug 'chrisbra/Colorizer', { 'for': ['less', 'scss', 'css', 'html']}
-let g:colorizer_auto_filetype='css,less,scss,html'
+Plug 'chrisbra/Colorizer', { 'for': ['less', 'scss', 'css', 'html', 'vue']}
+let g:colorizer_auto_filetype='css,less,scss,html,vue'
 
-Plug 'othree/html5.vim', { 'for': ['html', 'xhtml', 'vm', 'ftl'] }
+Plug 'othree/html5.vim', { 'for': ['html', 'xhtml', 'vm', 'ftl', 'vue'] }
 
 Plug 'hail2u/vim-css3-syntax'
 Plug 'groenewege/vim-less', { 'for': ['less']}
 Plug 'cakebaker/scss-syntax.vim', { 'for': ['scss'] }
-Plug 'othree/csscomplete.vim', { 'for': ['less', 'scss', 'css'] }
+Plug 'othree/csscomplete.vim', { 'for': ['less', 'scss', 'css', 'vue'] }
 
-Plug 'pangloss/vim-javascript', { 'for': 'javascript'}
-Plug 'heavenshell/vim-jsdoc', { 'for': 'javascript' }
+Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'vue']}
+Plug 'heavenshell/vim-jsdoc', { 'for': ['javascript', 'vue'] }
 if has('nvim')
   Plug 'carlitux/deoplete-ternjs'
   Plug 'ponko2/deoplete-fish'
