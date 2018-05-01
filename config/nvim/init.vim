@@ -57,6 +57,8 @@ set showcmd " Show the command in the status line.
 " Show vertical guides at 80 and 120, highlight characters that go over 120 columns (by drawing a border on the 121st)
 set colorcolumn=80,120
 
+set mouse=a
+
 " Only show cursorline in the current window and in normal mode {{{2
 augroup cline
     au!
