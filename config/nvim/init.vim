@@ -112,6 +112,19 @@ else " VIM/GVIM
   endif
 endif
 
+" Config permanet undo files
+if has('persistent_undo')
+  let undo_path=s:editor_root . '/undodir'
+  if empty(glob(undo_path . '/'))
+    " Ensure all needed directories exist
+    call mkdir(undo_path, "p")
+  endif
+  let &undodir = undo_path
+  set undofile
+  set undolevels=1000
+  set undoreload=10000
+endif
+
 
 " Title
 if &term == "screen"
