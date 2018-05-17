@@ -112,19 +112,21 @@ else " VIM/GVIM
   endif
 endif
 
-" Config permanet undo files
+" Config permanet undo files and backup storage
 if has('persistent_undo')
   let undo_path=s:editor_root . '/undodir'
+  " Ensure all needed directories exist
   if empty(glob(undo_path . '/'))
-    " Ensure all needed directories exist
     call mkdir(undo_path, "p")
   endif
   let &undodir = undo_path
   set undofile
   set undolevels=1000
   set undoreload=10000
-endif
 
+  set backupdir=./.backup,.,$TEMP,$TMP
+  set directory=.,./.swp,$TEMP,$TMP
+endif
 
 " Title
 if &term == "screen"
@@ -272,10 +274,17 @@ endif
 
 " Functions and remaps
 
+command! WQ wq
+command! Wq wq
+command! W w
+command! Q q
+
 " Ctrl-S to save file
 nmap <C-s> :w<CR>
 vmap <C-s> <Esc><c-s>gv
 imap <C-s> <Esc><c-s>
+" Ctrl-R to reload actual file
+nmap <C-r> :e<CR>
 
 " NeoVim terminal
 if has('nvim')
@@ -304,6 +313,7 @@ nnoremap <S-Up>     :buffers<cr>:buffer
 nnoremap <S-Down>   :b#<cr>
 nnoremap <S-Left>   :bp<cr>
 nnoremap <S-Right>  :bn<cr>
+nnoremap <Leader>c  :ene<CR>:bw #<CR>
 
 " Window navigation
 nnoremap <Leader><Up>     <C-W><Up>
