@@ -11,6 +11,7 @@ cd ~
 ln -sf ${DIR}/bashrc ~/.bashrc
 
 ln -s ${DIR}/gitconfig ~/.gitconfig
+ln -sf ${DIR}/gitconfig-common ~/.gitconfig-common
 ln -sf ${DIR}/gitconfig-personal ~/.gitconfig-personal
 ln -sf ${DIR}/gitconfig-work ~/.gitconfig-work
 
