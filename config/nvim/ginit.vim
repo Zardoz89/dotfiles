@@ -26,15 +26,9 @@ let s:fonts = [
 if exists('g:GtkGuiLoaded') " neovim-gtk
   let g:GuiInternalClipboard = 1
   call rpcnotify(1, 'Gui', 'Option', 'Tabline', 0)
-  call rpcnotify(1, 'Gui', 'Font', s:fonts[0][0].' '.s:fonts[0][1])
+  call rpcnotify(1, 'Gui', 'Font', 'Fira Code 10')
 else                |
-  command -nargs=? Guifont call luc#gui#nvim_qt_guifont(<q-args>)
-  augroup LucNvimGUIFont
-    autocmd VimEnter *
-      \ if has('nvim') && has('gui_running')                |
-      \   execute 'Guifont' s:fonts[0][0].':h'.s:fonts[0][1] |
-      \ endif
-  augroup END
+  Guifont Fira Code:h10
 endif
 
 " Shift+Insert on neovim-gtk
