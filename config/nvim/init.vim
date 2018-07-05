@@ -157,6 +157,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'kien/ctrlp.vim'
 Plug 'w0rp/ale'
+Plug 'https://gitlab.com/hauleth/qfx.vim.git'
 if !has('nvim')
   Plug 'Shougo/neocomplete'
 else
