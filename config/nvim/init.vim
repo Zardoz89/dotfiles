@@ -212,6 +212,7 @@ if has('nvim')
   Plug 'ponko2/deoplete-fish'
 endif
 
+"Plug 'yardnsm/vim-import-cost', { 'do': 'npm install' }
 Plug 'posva/vim-vue', {'for': 'vue'}
 
 " Java
@@ -224,6 +225,7 @@ Plug 'andreshazard/vim-freemarker'
 "Plug '~/.config/nvim/bundle/eclim'
 
 " Color theme
+Plug 'haishanh/night-owl.vim'
 Plug 'reewr/vim-monokai-phoenix'
 
 filetype plugin indent on                   " required!
@@ -343,9 +345,11 @@ vnoremap > >gv
 
 
 " Setup color scheme
+syntax enable
 set background=dark
 try
-  colors monokai-phoenix
+  "colorscheme night-owl
+  colorscheme monokai-phoenix
 catch /^Vim\%((\a\+)\)\=:E185/
   colors darkblue   " Fallback to darkblue
 endtry
