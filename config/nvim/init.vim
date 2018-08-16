@@ -1,4 +1,4 @@
-" Generic config ***************************************************************
+" Generic config ***************************************************************ir
 
 syntax on
 
@@ -240,6 +240,7 @@ let NERDTreeNaturalSort=1
 let NERDTreeChDirMode=1
 
 " Config Airline and status line
+set statusline+=\ %{&bomb?'BOM':''}
 let g:smartusline_string_to_highlight = '(%n) %f '
 set laststatus=2 " Seperate lines for state and mode
 let g:airline_powerline_fonts=1 " Powerline simbols. Hermit font support it
