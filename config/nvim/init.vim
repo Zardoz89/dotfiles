@@ -261,7 +261,6 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg='#101010'
 
 " Ale async syntax
 let g:airline#extensions#ale#enabled = 1
-let g:ale_completion_enabled = 1
 
 " Autocomplete
 if has('nvim')
