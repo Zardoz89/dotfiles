@@ -158,6 +158,7 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'kien/ctrlp.vim'
 Plug 'w0rp/ale'
 Plug 'https://gitlab.com/hauleth/qfx.vim.git'
+Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 if !has('nvim')
   Plug 'Shougo/neocomplete'
 else
@@ -328,6 +329,9 @@ nnoremap <Leader><Right>  <C-W><Right>
 " Trailing spaces & Remove tabs stuff
 nnoremap <silent> <Leader>tl :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 nnoremap <silent> <Leader>rt :let _s=@/<Bar>:%s/\t/    /g<CR>:let @/=_s<Bar>:nohl<CR>
+
+" Show list of keybindings
+nnoremap <silent> <leader> :<c-u>WhichKey ','<CR>
 
 " Append modeline after last line in buffer.
 " Use substitute() instead of printf() to handle '%%s' modeline in LaTeX
