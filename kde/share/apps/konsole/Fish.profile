@@ -17,7 +17,7 @@ TerminalColumns=120
 AutoCopySelectedText=true
 
 [Scrolling]
-HistorySize=4000
+HistorySize=6000
 
 [Terminal Features]
 BlinkingCursorEnabled=true
