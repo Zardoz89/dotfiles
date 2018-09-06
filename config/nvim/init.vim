@@ -21,10 +21,12 @@ set hlsearch " Higlihts search results
 
 " Identation
 set autoindent " Copy indent from current line when starting a new line
+set copyindent
 set smarttab
 set tabstop=2 " Number of space og a <Tab> character
 set softtabstop=2
 set shiftwidth=2 " Number of spaces use by autoindent
+set shiftround " round indent to multiple of 'shiftwidth'
 set expandtab " Pressing <Tab> puts spaces, and < or > for indenting
 
 " Display tabs and trailing spaces visually
@@ -70,14 +72,29 @@ augroup END
 " Fileformats
 autocmd bufread *.less set ft=less
 autocmd bufread *.md set ft=markdown
-autocmd FileType make set noexpandtab nosta sw=4 sts=4 tabstop=4
-autocmd FileType md set expandtab nosta sw=4 sts=4 tabstop=4
-autocmd FileType xml setl noexpandtab nosta sw=4 sts=4 tabstop=4
+autocmd FileType make setlocal noexpandtab nosta sw=4 sts=4 tabstop=4
+autocmd FileType markdown call SetMarkdownOptions()
+" If overwrite the SetMarkDownOptions function if it exists
+function! SetMarkdownOptions()
+  setlocal expandtab
+  setlocal nosta
+  setlocal sw=4
+  setlocal sts=4
+  setlocal tabstop=4
+  setlocal textwidth=79
+  setlocal colorcolumn=80
+  setlocal spell spelllang=en_us
+  setlocal noshiftround
+endfunction
+autocmd FileType xml setlocal noexpandtab nosta sw=4 sts=4 tabstop=4
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
-autocmd FileType css,sass,scss setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType css,less,sass,scss setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+" Add spell check to git commits
+autocmd FileType gitcommit setlocal spell spelllang=en_us
 
 " OS and GVim/Vim/NVim stuff ***************************************************
 
@@ -185,6 +202,7 @@ if has('nvim')
     endif
   endfunction
   Plug 'euclio/vim-markdown-composer', {'do': function('BuildComposer') }
+  let g:markdown_composer_browser = "firefox"
 endif
 Plug 'alvan/vim-closetag'
 let g:closetag_filenames = "*.html,*.xhtml,*.xml,*.vm,*.ftl,*.vue"
