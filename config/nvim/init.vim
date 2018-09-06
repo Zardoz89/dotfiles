@@ -43,6 +43,10 @@ set pastetoggle=<F2> " Use F2 to do Ctrl+V from console
 set number " show line number
 set ru " Ruler active
 
+" Folding
+set foldmethod=syntax
+set nofoldenable
+
 " Wildmenu
 set wildmenu
 
@@ -171,7 +175,6 @@ Plug 'bling/vim-airline'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'kien/ctrlp.vim'
 Plug 'w0rp/ale'
 Plug 'https://gitlab.com/hauleth/qfx.vim.git'
@@ -185,16 +188,23 @@ if has('nvim')
   Plug 'kassio/neoterm'
   set shell=/usr/bin/fish
   let g:neoterm_shell = "fish"
+  let g:neoterm_autoinsert = 1
 endif
 
 " Git
+Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tpope/vim-git', { 'for': 'git' }
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
 " Languages
 Plug 'dag/vim-fish'
-Plug 'tpope/vim-markdown', { 'for': 'markdown' }
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_folding_level = 2
+set conceallevel=2
+"Plug 'tpope/vim-markdown', { 'for': 'markdown' }
 if has('nvim')
   function! BuildComposer(info)
     if a:info.status != 'unchanged' || a:info.force
@@ -260,6 +270,7 @@ let NERDTreeChDirMode=1
 
 " Config Airline and status line
 set statusline+=\ %{&bomb?'BOM':''}
+let g:airline#extensions#ale#enabled = 1
 let g:smartusline_string_to_highlight = '(%n) %f '
 set laststatus=2 " Seperate lines for state and mode
 let g:airline_powerline_fonts=1 " Powerline simbols. Hermit font support it
@@ -278,8 +289,10 @@ let g:indent_guides_auto_colors = 0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd guibg='#202020' ctermbg=darkgrey
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg='#101010'
 
-" Ale async syntax
-let g:airline#extensions#ale#enabled = 1
+" Ale - Asynchronus Linting Engine
+let g:ale_sign_column_always = 1
+let g:ale_sign_error = 'E'
+let g:ale_sign_warning = 'W'
 
 " Autocomplete
 if has('nvim')
