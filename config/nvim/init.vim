@@ -98,7 +98,7 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 " Add spell check to git commits
-autocmd FileType gitcommit setlocal spell spelllang=en_us
+autocmd FileType gitcommit setlocal spell spelllang=es_es
 
 " OS and GVim/Vim/NVim stuff ***************************************************
 
