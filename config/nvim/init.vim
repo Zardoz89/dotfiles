@@ -90,12 +90,11 @@ function! SetMarkdownOptions()
   setlocal spell spelllang=en_us
   setlocal noshiftround
 endfunction
-autocmd FileType xml setlocal noexpandtab nosta sw=4 sts=4 tabstop=4
+autocmd FileType xml setlocal noexpandtab nosta sw=4 sts=4 tabstop=4 omnifunc=xmlcomplete#CompleteTags
 autocmd FileType java setlocal omnifunc=javacomplete#Complete
 autocmd FileType css,less,sass,scss setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 " Add spell check to git commits
 autocmd FileType gitcommit setlocal spell spelllang=es_es
@@ -179,10 +178,10 @@ Plug 'kien/ctrlp.vim'
 Plug 'w0rp/ale'
 Plug 'https://gitlab.com/hauleth/qfx.vim.git'
 Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
-if !has('nvim')
-  Plug 'Shougo/neocomplete'
-else
+if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
 endif
 if has('nvim')
   Plug 'kassio/neoterm'
