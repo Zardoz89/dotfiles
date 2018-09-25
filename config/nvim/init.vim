@@ -244,7 +244,6 @@ endif
 Plug 'posva/vim-vue', {'for': 'vue'}
 
 " Java
-Plug 'mikelue/vim-maven-plugin'
 Plug 'artur-shaik/vim-javacomplete2'
 Plug 'lepture/vim-velocity'
 Plug 'andreshazard/vim-freemarker'
