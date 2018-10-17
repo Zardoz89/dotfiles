@@ -195,6 +195,7 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tpope/vim-git', { 'for': 'git' }
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
+let g:gitgutter_max_signs=1024
 
 " Languages
 Plug 'dag/vim-fish'
@@ -227,6 +228,7 @@ Plug 'chrisbra/Colorizer', { 'for': ['less', 'scss', 'css', 'html', 'vue']}
 let g:colorizer_auto_filetype='css,less,scss,html,vue'
 
 Plug 'othree/html5.vim', { 'for': ['html', 'xhtml', 'vm', 'ftl', 'vue'] }
+Plug 'actionshrimp/vim-xpath', { 'for': ['xml', 'html', 'xhtml'] }
 
 Plug 'hail2u/vim-css3-syntax'
 Plug 'groenewege/vim-less', { 'for': ['less']}
