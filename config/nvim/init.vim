@@ -309,11 +309,13 @@ endif
 
 
 " Functions and remaps
-
 command! WQ wq
 command! Wq wq
 command! W w
 command! Q q
+
+" black hole
+map <leader>b "_
 
 " Ctrl-S to save file
 nmap <C-s> :w<CR>
