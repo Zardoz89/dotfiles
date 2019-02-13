@@ -291,8 +291,9 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg='#101010'
 
 " Ale - Asynchronus Linting Engine
 let g:ale_sign_column_always = 1
-let g:ale_sign_error = 'E'
-let g:ale_sign_warning = 'W'
+let g:ale_sign_error = 'E' "'❌'
+let g:ale_sign_warning = '!'
+let b:ale_fixers = {'javascript': ['prettier', 'eslint']}
 
 " Autocomplete
 if has('nvim')
