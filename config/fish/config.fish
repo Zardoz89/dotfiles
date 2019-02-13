@@ -1,5 +1,10 @@
-
-# Alias                                                                                                           
+function most_pager --description 'sets most as man pager if is installed'
+  if type -q most
+    echo "Setting most as pagger"
+    set -g -x PAGER most
+  end
+end
+most_pager
 
 function ssh_agent --description 'launch the ssh-agent and add the id_rsa identity'
     if    begin
@@ -16,8 +21,9 @@ function ssh_agent --description 'launch the ssh-agent and add the id_rsa identi
     ssh-add -l | grep -q $fingerprint
         or ssh-add $identity
 end
-
 ssh_agent
 
 source $HOME/.cargo/env
+
+# Alias                                                                                                           
 
