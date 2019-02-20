@@ -175,19 +175,23 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'scrooloose/nerdtree'
 Plug 'kien/ctrlp.vim'
-Plug 'w0rp/ale'
-Plug 'https://gitlab.com/hauleth/qfx.vim.git'
-Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-endif
+Plug 'w0rp/ale' " Async linting/fixing
+Plug 'https://gitlab.com/hauleth/qfx.vim.git' " Disokay signs in lines that have QuicFix entry
+Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] } " Vim plugin that shows keybindings in popup
+" Terminal stuff
 if has('nvim')
   Plug 'kassio/neoterm'
   set shell=/usr/bin/fish
   let g:neoterm_shell = "fish"
   let g:neoterm_autoinsert = 1
+endif
+" Async completion
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
 endif
 
 " Git
