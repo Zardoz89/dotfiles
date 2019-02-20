@@ -171,13 +171,22 @@ call plug#begin(plugged_path)
 
 " Must have Plugs!
 Plug 'bling/vim-airline'
-Plug 'nathanaelkane/vim-indent-guides'
+Plug 'nathanaelkane/vim-indent-guides' "Show identation levels with different background colors
 Plug 'editorconfig/editorconfig-vim'
 Plug 'scrooloose/nerdtree'
-Plug 'kien/ctrlp.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " Fuzzy file finder
+Plug 'junegunn/fzf.vim'
 Plug 'w0rp/ale' " Async linting/fixing
-Plug 'https://gitlab.com/hauleth/qfx.vim.git' " Disokay signs in lines that have QuicFix entry
+Plug 'https://gitlab.com/hauleth/qfx.vim.git' " Display signs in lines that have QuicFix entry
 Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] } " Vim plugin that shows keybindings in popup
+"autocmd! User vim-which-key call which#register(',', 'g:which_key_map')
+Plug 'wellle/targets.vim' " Additional text objects -> vat yi
+Plug 'rstacruz/vim-closer' " Autoclose pairs brakcets when press enter
+let g:closer_flags='{;'
+Plug 'jiangmiao/auto-pairs' " Autoclose pairs 
+let g:AutoPairs={"(":")","'":"'",'"':'"', "`":"`", '```':'```', '"""':'"""', "'''":"'''"}
+Plug 'tpope/vim-surround' " add/change/delete surroding pairs -> dst
+
 " Terminal stuff
 if has('nvim')
   Plug 'kassio/neoterm'
@@ -195,7 +204,7 @@ else
 endif
 
 " Git
-Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle'  }
 Plug 'tpope/vim-git', { 'for': 'git' }
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
@@ -218,9 +227,8 @@ if has('nvim')
   Plug 'euclio/vim-markdown-composer', {'do': function('BuildComposer') }
   let g:markdown_composer_browser = "firefox"
 endif
-Plug 'alvan/vim-closetag'
+Plug 'alvan/vim-closetag' "Autoclose html/xml tags
 let g:closetag_filenames = "*.html,*.xhtml,*.xml,*.vm,*.ftl,*.vue"
-Plug 'jiangmiao/auto-pairs'
 
 " D Lang
 if has('nvim')
@@ -271,6 +279,17 @@ let NERDTreeShowBookmarks=1
 let NERDTreeHijackNetrw=1
 let NERDTreeNaturalSort=1
 let NERDTreeChDirMode=1
+noremap <silent> <leader>n :NERDTreeToggle<CR> <C-w>=
+noremap <silent> <leader>f :NERDTreeFind<CR> <C-w>=
+
+function! NERDTreeRefresh()
+    if &filetype == "nerdtree"
+        silent exe substitute(mapcheck("R"), "<CR>", "", "")
+    endif
+endfunction
+
+autocmd BufEnter * call NERDTreeRefresh()
+
 
 " Config Airline and status line
 set statusline+=\ %{&bomb?'BOM':''}
