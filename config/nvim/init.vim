@@ -34,7 +34,6 @@ set list listchars=tab:‣\ ,nbsp:␣,extends:▶,trail:·
 let &showbreak = '↳ '"'←'
 
 set hidden     " Not close buffer, only hide it
-
 set splitright " Split vertically to the right.
 set splitbelow " Split horizontally below.
 
@@ -194,6 +193,12 @@ if has('nvim')
   let g:neoterm_shell = "fish"
   let g:neoterm_autoinsert = 1
 endif
+
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+
 " Async completion
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -320,6 +325,21 @@ let b:ale_fixers = {'javascript': ['prettier', 'eslint']}
 
 " Autocomplete
 if has('nvim')
+  " Begin LSP configuration
+  let g:LanguageClient_serverCommands = {
+    \ 'vhdl': ['vhdl-tool', 'lsp']
+      \ }
+
+  let g:LanguageClient_autoStart = 1
+
+  nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+  nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+  nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+
+  au! CursorHold *.vhd  execute ":call LanguageClient_textDocument_hover()"
+  au! CursorHold *.vhdl execute ":call LanguageClient_textDocument_hover()"
+  " End LSP configuration
+
   " Deoplete async autocomplete
   let g:deoplete#enable_at_startup = 1
   let g:deoplete#omni_patterns = {}
@@ -327,6 +347,7 @@ if has('nvim')
   let g:deoplete#sources = {}
   let g:deoplete#sources._ = []
   let g:deoplete#file#enable_buffer_path = 1
+  autocmd CompleteDone * pclose!
   inoremap <silent><expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
   inoremap <silent><expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
 endif
