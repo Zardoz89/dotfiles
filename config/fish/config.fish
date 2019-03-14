@@ -1,7 +1,7 @@
 function most_pager --description 'sets most as man pager if is installed'
   if type -q most
     echo "Setting most as pagger"
-    set -g -x PAGER most
+    set -g -x MANPAGER most
   end
 end
 most_pager
