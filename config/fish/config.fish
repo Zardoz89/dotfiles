@@ -25,5 +25,24 @@ ssh_agent
 
 source $HOME/.cargo/env
 
+
+function JAVA_ORACLE_8 --description 'Sets JAVA_HOME to Java Oracle 8'
+  if test -d /usr/lib/jvm/java-8-oracle
+    echo "Setting Oracle Java 8"
+    set -gx JAVA_HOME /usr/lib/jvm/java-8-oracle
+    alias java "/usr/lib/jvm/java-8-oracle/bin/java"
+    alias javac "/usr/lib/jvm/java-8-oracle/bin/javac"
+  end
+end
+
+function JAVA_11 --description 'Sets JAVA_HOME to Java OpenJDK 11'
+  if test -d /usr/lib/jvm/java-11-openjdk-amd64/
+    echo "Setting OpenJDK Java 11"
+    set -gx JAVA_HOME /usr/lib/jvm/java-11-openjdk-amd64/
+    alias java "/usr/lib/jvm/java-11-openjdk-amd64/bin/java"
+    alias javac "/usr/lib/jvm/java-11-openjdk-amd64/bin/javac"
+end
+end
+
 # Alias                                                                                                           
 
