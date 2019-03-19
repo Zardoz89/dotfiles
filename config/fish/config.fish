@@ -7,7 +7,7 @@ end
 most_pager
 
 function ssh_agent --description 'launch the ssh-agent and add the id_rsa identity'
-    if    begin
+    if begin
             set -q SSH_AGENT_PID
             and kill -0 $SSH_AGENT_PID
             and grep -q '^ssh-agent' /proc/$SSH_AGENT_PID/cmdline
@@ -23,7 +23,9 @@ function ssh_agent --description 'launch the ssh-agent and add the id_rsa identi
 end
 ssh_agent
 
-source $HOME/.cargo/env
+if test -d $HOME/.cargo/env
+  source $HOME/.cargo/env
+end
 
 
 function JAVA_ORACLE_8 --description 'Sets JAVA_HOME to Java Oracle 8'
