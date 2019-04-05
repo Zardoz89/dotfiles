@@ -30,7 +30,7 @@ set shiftround " round indent to multiple of 'shiftwidth'
 set expandtab " Pressing <Tab> puts spaces, and < or > for indenting
 
 " Display tabs and trailing spaces visually
-set list listchars=tab:‣\ ,nbsp:␣,extends:▶,trail:·
+set list listchars=tab:‣\ ,nbsp:␣,extends:▶,trail:·,eol:¶
 let &showbreak = '↳ '"'←'
 
 set hidden     " Not close buffer, only hide it
