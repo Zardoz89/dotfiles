@@ -1,3 +1,11 @@
+function set_lsd --description 'sets lsd as ls if is installed'
+  if type -q lsd
+    echo "Setting lsd alias"
+    alias ls "lsd --icon-theme unicode"
+  end
+end
+set_lsd
+
 function most_pager --description 'sets most as man pager if is installed'
   if type -q most
     echo "Setting most as pagger"
