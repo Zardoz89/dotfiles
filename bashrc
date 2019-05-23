@@ -121,3 +121,6 @@ export SDKMAN_DIR="~/.sdkman"
 [[ -s "~/.sdkman/bin/sdkman-init.sh" ]] && source "~/.sdkman/bin/sdkman-init.sh"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# added by pipx (https://github.com/pipxproject/pipx)
+export PATH="/home/luis/.local/bin:$PATH"
