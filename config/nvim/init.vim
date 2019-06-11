@@ -175,7 +175,6 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'scrooloose/nerdtree'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " Fuzzy file finder
 Plug 'junegunn/fzf.vim'
-Plug 'w0rp/ale' " Async linting/fixing
 Plug 'https://gitlab.com/hauleth/qfx.vim.git' " Display signs in lines that have QuicFix entry
 Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] } " Vim plugin that shows keybindings in popup
 "autocmd! User vim-which-key call which#register(',', 'g:which_key_map')
@@ -194,12 +193,12 @@ if has('nvim')
   let g:neoterm_autoinsert = 1
 endif
 
+" Langauge autocomplete and Async completions {{
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
     \ }
-
-" Async completion
+Plug 'w0rp/ale' " Async linting/fixing
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 else
@@ -207,11 +206,12 @@ else
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
+" }}
 
 " Git
 Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle'  }
 Plug 'tpope/vim-git', { 'for': 'git' }
-Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive', { 'on': [ 'Gcommit', 'Gstatus', 'Gblame', 'Gdiff' ] }
 Plug 'airblade/vim-gitgutter'
 let g:gitgutter_max_signs=1024
 
@@ -342,12 +342,13 @@ if has('nvim')
 
   " Deoplete async autocomplete
   let g:deoplete#enable_at_startup = 1
-  let g:deoplete#omni_patterns = {}
-  let g:deoplete#omni_patterns.java = '[^. *\t]\.\w*'
-  let g:deoplete#sources = {}
-  let g:deoplete#sources._ = []
+  "let g:deoplete#omni_patterns = {}
+  "let g:deoplete#omni_patterns.java = '[^. *\t]\.\w*'
+  "let g:deoplete#sources = {}
+  "let g:deoplete#sources._ = ['buffer']
   let g:deoplete#file#enable_buffer_path = 1
   autocmd CompleteDone * pclose!
+  " Autocokpelte on TAB
   inoremap <silent><expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
   inoremap <silent><expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
 endif
