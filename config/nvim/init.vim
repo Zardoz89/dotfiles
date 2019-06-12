@@ -94,6 +94,8 @@ autocmd FileType java setlocal omnifunc=javacomplete#Complete
 autocmd FileType css,less,sass,scss setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+" // and /* */ as comments on JSON or pseudo JSON files
+autocmd FileType json syntax match Comment +\/\/.\+$+
 
 " Add spell check to git commits
 autocmd FileType gitcommit setlocal spell spelllang=es_es
@@ -181,14 +183,9 @@ Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] } " Vim plugi
 Plug 'wellle/targets.vim' " Additional text objects -> vat yi
 Plug 'rstacruz/vim-closer' " Autoclose pairs brakcets when press enter
 let g:closer_flags='{;'
-Plug 'jiangmiao/auto-pairs' " Autoclose pairs 
+Plug 'jiangmiao/auto-pairs' " Autoclose pairs
 let g:AutoPairs={"(":")","'":"'",'"':'"', "`":"`", '```':'```', '"""':'"""', "'''":"'''"}
 Plug 'tpope/vim-surround' " add/change/delete surroding pairs -> dst
-
-" Terminal stuff
-if has('nvim')
-  set shell=/usr/bin/fish
-endif
 
 " Langauge autocomplete and Async completions {{
 Plug 'autozimu/LanguageClient-neovim', {
@@ -276,6 +273,12 @@ call plug#end()
 
 " Vundle ***********************************************************************
 
+" Terminal stuff
+if has('nvim')
+  set shell=/usr/bin/fish
+  autocmd TermOpen * startinsert
+endif
+
 " NERD tree
 let NERDTreeShowBookmarks=1
 let NERDTreeHijackNetrw=1
@@ -344,10 +347,20 @@ if has('nvim')
   "let g:deoplete#sources = {}
   "let g:deoplete#sources._ = ['buffer']
   let g:deoplete#file#enable_buffer_path = 1
-  autocmd CompleteDone * pclose!
+  "autocmd CompleteDone * pclose!
+  " Close the preview windows when completion is done
+  autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+
   " Autocokpelte on TAB
   inoremap <silent><expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
   inoremap <silent><expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
+  " Use <tab> and <S-tab> to navigate the completion list
+  inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+  inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+  " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
+  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 endif
 
 
