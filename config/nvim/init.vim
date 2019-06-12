@@ -187,10 +187,7 @@ Plug 'tpope/vim-surround' " add/change/delete surroding pairs -> dst
 
 " Terminal stuff
 if has('nvim')
-  Plug 'kassio/neoterm'
   set shell=/usr/bin/fish
-  let g:neoterm_shell = "fish"
-  let g:neoterm_autoinsert = 1
 endif
 
 " Langauge autocomplete and Async completions {{
