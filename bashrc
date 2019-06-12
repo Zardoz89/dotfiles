@@ -124,3 +124,5 @@ export SDKMAN_DIR="~/.sdkman"
 
 # added by pipx (https://github.com/pipxproject/pipx)
 export PATH="/home/luis/.local/bin:$PATH"
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
