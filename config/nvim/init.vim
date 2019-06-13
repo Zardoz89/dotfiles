@@ -261,9 +261,6 @@ Plug 'artur-shaik/vim-javacomplete2'
 Plug 'lepture/vim-velocity'
 Plug 'andreshazard/vim-freemarker'
 
-" Eclim -> Control Eclipse from VIm
-"Plug '~/.config/nvim/bundle/eclim'
-
 " Color theme
 Plug 'haishanh/night-owl.vim'
 Plug 'reewr/vim-monokai-phoenix'
@@ -342,12 +339,7 @@ if has('nvim')
 
   " Deoplete async autocomplete
   let g:deoplete#enable_at_startup = 1
-  "let g:deoplete#omni_patterns = {}
-  "let g:deoplete#omni_patterns.java = '[^. *\t]\.\w*'
-  "let g:deoplete#sources = {}
-  "let g:deoplete#sources._ = ['buffer']
   let g:deoplete#file#enable_buffer_path = 1
-  "autocmd CompleteDone * pclose!
   " Close the preview windows when completion is done
   autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
@@ -358,9 +350,6 @@ if has('nvim')
   inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
   inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
-  " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
-  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 endif
 
 
