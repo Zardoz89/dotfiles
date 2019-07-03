@@ -1,12 +1,11 @@
 #!/bin/bash
 
-# ARC theme KDE/Qt
+# Materia theme for KDE and GTK
 sudo add-apt-repository ppa:papirus/papirus
 sudo apt update
-sudo apt-get install --install-recommends arc-kde
+sudo apt-get install --install-recommends materia-kde materia-gtk-theme
 
-# ARC theme GTK
-sudo add-apt-repository ppa:noobslab/themes
-sudo apt update
-sudo apt install arc-theme
+# suru plus aspromauros icon theme
+wget -qO- https://raw.githubusercontent.com/gusbemacbe/suru-plus-aspromauros/master/install.sh | sh
+
 
