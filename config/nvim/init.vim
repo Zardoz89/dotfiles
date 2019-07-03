@@ -186,6 +186,9 @@ let g:closer_flags='{;'
 Plug 'jiangmiao/auto-pairs' " Autoclose pairs
 let g:AutoPairs={"(":")","'":"'",'"':'"', "`":"`", '```':'```', '"""':'"""', "'''":"'''"}
 Plug 'tpope/vim-surround' " add/change/delete surroding pairs -> dst
+"Allow to see registers with '"' or '@' in normal mode or <Ctrl-R> in insert
+"mode
+Plug 'junegunn/vim-peekaboo'
 
 " Langauge autocomplete and Async completions {{
 Plug 'autozimu/LanguageClient-neovim', {
