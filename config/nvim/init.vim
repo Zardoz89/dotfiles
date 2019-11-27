@@ -177,7 +177,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'scrooloose/nerdtree'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " Fuzzy file finder
 Plug 'junegunn/fzf.vim'
-Plug 'https://gitlab.com/hauleth/qfx.vim.git' " Display signs in lines that have QuicFix entry
+Plug 'https://gitlab.com/hauleth/qfx.vim.git' " Display signs in lines that have QuickFix entry
 Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] } " Vim plugin that shows keybindings in popup
 "autocmd! User vim-which-key call which#register(',', 'g:which_key_map')
 Plug 'wellle/targets.vim' " Additional text objects -> vat yi
@@ -190,7 +190,7 @@ Plug 'tpope/vim-surround' " add/change/delete surroding pairs -> dst
 "mode
 Plug 'junegunn/vim-peekaboo'
 
-" Langauge autocomplete and Async completions {{
+" Language autocomplete and Async completions {{
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
