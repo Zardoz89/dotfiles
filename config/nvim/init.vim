@@ -268,6 +268,9 @@ Plug 'andreshazard/vim-freemarker'
 Plug 'haishanh/night-owl.vim'
 Plug 'reewr/vim-monokai-phoenix'
 
+" Vim using nice font icons!
+Plug 'ryanoasis/vim-devicons'
+
 filetype plugin indent on                   " required!
 call plug#end()
 
