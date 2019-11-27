@@ -226,7 +226,7 @@ if has('nvim')
       !cargo build --release
     endif
   endfunction
-  Plug 'euclio/vim-markdown-composer', {'do': function('BuildComposer') }
+  "Plug 'euclio/vim-markdown-composer', {'do': function('BuildComposer') }
   let g:markdown_composer_browser = "firefox"
 endif
 Plug 'alvan/vim-closetag' "Autoclose html/xml tags
