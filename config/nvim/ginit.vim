@@ -1,7 +1,7 @@
 " font setup for gvim by luc
 
 let s:fonts = [
-      \ ['FuraCode Nerd Font',       10, 25],
+      \ ['FuraCode Nerd Font Mono',       10, 25],
       \ ['Fira Code',                10, 25],
       \ ['Hack',                     10, 25],
       \ ['Source Code Pro',          10, 25],
@@ -24,12 +24,17 @@ let s:fonts = [
 "
 " let &guifont = g:luc#gui#normalfonts
 
+" Disable anoying GUI tabline
+call rpcnotify(1, 'Gui', 'Option', 'Tabline', 0)
+
+" Fix shift+i
+inoremap <silent>  <S-Insert>  <C-R>+
+
 if exists('g:GtkGuiLoaded') " neovim-gtk
   let g:GuiInternalClipboard = 1
-  call rpcnotify(1, 'Gui', 'Option', 'Tabline', 0)
-  call rpcnotify(1, 'Gui', 'Font', 'FuraCode Nerd Font 10')
-else                |
-  Guifont! FuraCode Nerd Font:h10
+  call rpcnotify(1, 'Gui', 'Font', 'FuraCode Nerd Font Mono 10')
+else
+  Guifont! FuraCode Nerd Font Mono:h10
 endif
 
 " Shift+Insert on neovim-gtk
@@ -38,4 +43,7 @@ if exists('g:GtkGuiLoaded')
   imap <silent> <S-Insert> <Esc>"+pa
 endif
 
-
+" Trying menu
+menu File.Save :w<CR>
+inoremenu File.Save :w<CR>
+amenu File.Next :next^M
