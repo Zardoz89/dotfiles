@@ -275,7 +275,10 @@ Plug 'ryanoasis/vim-devicons'
 
 " COC
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-let g:coc_global_extensions = ['coc-lists', 'coc-json', 'coc-highlight', 'coc-css', 'coc-eslint', 'coc-tsserver', 'coc-git']
+let g:coc_global_extensions = [
+  \ 'coc-lists', 'coc-json', 'coc-highlight', 'coc-css', 'coc-eslint', 'coc-tsserver', 'coc-git', 'coc-yaml',
+  \ 'coc-vimlsp', 'coc-xml', 'coc-fish', 'coc-sh'
+  \]
 
 filetype plugin indent on                   " required!
 call plug#end()
@@ -410,13 +413,13 @@ function! s:show_documentation()
   endif
 endfunction
 
-" Highlight symbol under cursor on CursorHold
-autocmd CursorHold * silent call CocActionAsync('highlight')
-
 " Remap for rename current word
 nmap <leader>rn <Plug>(coc-rename)
 
-" CoC plugins
+" CoC extensions
+
+" Highlight symbol under cursor on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
 
 
 " ****************************************************************************
