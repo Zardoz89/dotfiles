@@ -50,14 +50,16 @@ set nofoldenable
 set wildmenu
 
 " Complete options (disable preview scratch window)
-set completeopt=menu,menuone,longest
+"set completeopt=menu,menuone,longest
 " Limit popup menu height
-set pumheight=15
+"set pumheight=15
 
 " Status bar
 set laststatus=2 " Seperate lines for state and mode
 set showmode " Show current mode in the status line.
 set showcmd " Show the command in the status line.
+set cmdheight=2 "Better display for messages 
+set updatetime=300
 
 " Show vertical guides at 80 and 120, highlight characters that go over 120 columns (by drawing a border on the 121st)
 set colorcolumn=80,120
@@ -195,11 +197,11 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
     \ }
-Plug 'w0rp/ale' " Async linting/fixing
+"Plug 'w0rp/ale' " Async linting/fixing
 if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  "Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 else
-  Plug 'Shougo/deoplete.nvim'
+  "Plug 'Shougo/deoplete.nvim'
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
@@ -233,9 +235,9 @@ Plug 'alvan/vim-closetag' "Autoclose html/xml tags
 let g:closetag_filenames = "*.html,*.xhtml,*.xml,*.vm,*.ftl,*.vue"
 
 " D Lang
-if has('nvim')
-  Plug 'landaire/deoplete-d', { 'for': 'd' }
-endif
+"if has('nvim')
+"  Plug 'landaire/deoplete-d', { 'for': 'd' }
+"endif
 
 " Web stuff
 Plug 'chrisbra/Colorizer', { 'for': ['less', 'scss', 'css', 'html', 'vue']}
@@ -251,10 +253,10 @@ Plug 'othree/csscomplete.vim', { 'for': ['less', 'scss', 'css', 'vue'] }
 
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'vue']}
 Plug 'heavenshell/vim-jsdoc', { 'for': ['javascript', 'vue'] }
-if has('nvim')
-  Plug 'carlitux/deoplete-ternjs'
-  Plug 'ponko2/deoplete-fish'
-endif
+"if has('nvim')
+"  Plug 'carlitux/deoplete-ternjs'
+"  Plug 'ponko2/deoplete-fish'
+"endif
 
 "Plug 'yardnsm/vim-import-cost', { 'do': 'npm install' }
 Plug 'posva/vim-vue', {'for': 'vue'}
@@ -270,6 +272,9 @@ Plug 'reewr/vim-monokai-phoenix'
 
 " Vim using nice font icons!
 Plug 'ryanoasis/vim-devicons'
+
+" COC
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 filetype plugin indent on                   " required!
 call plug#end()
@@ -301,7 +306,7 @@ autocmd BufEnter * call NERDTreeRefresh()
 
 " Config Airline and status line
 set statusline+=\ %{&bomb?'BOM':''}
-let g:airline#extensions#ale#enabled = 1
+"let g:airline#extensions#ale#enabled = 1
 let g:smartusline_string_to_highlight = '(%n) %f '
 set laststatus=2 " Seperate lines for state and mode
 let g:airline_powerline_fonts=1 " Powerline simbols. Hermit font support it
@@ -321,42 +326,94 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd guibg='#202020' ctermbg=darkg
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg='#101010'
 
 " Ale - Asynchronus Linting Engine
-let g:ale_sign_column_always = 1
-let g:ale_sign_error = 'E' "'❌'
-let g:ale_sign_warning = '!'
-let b:ale_fixers = {'javascript': ['prettier', 'eslint']}
+"let g:ale_sign_column_always = 1
+"let g:ale_sign_error = 'E' "'❌'
+"let g:ale_sign_warning = '!'
+"let b:ale_fixers = {'javascript': ['prettier', 'eslint']}
 
 " Autocomplete
-if has('nvim')
+"if has('nvim')
   " Begin LSP configuration
-  let g:LanguageClient_serverCommands = {
-    \ 'vhdl': ['vhdl-tool', 'lsp']
-      \ }
+  "let g:LanguageClient_serverCommands = {
+  "  \ 'vhdl': ['vhdl-tool', 'lsp']
+  "    \ }
 
-  let g:LanguageClient_autoStart = 1
+  "let g:LanguageClient_autoStart = 1
 
-  nnoremap <F5> :call LanguageClient_contextMenu()<CR>
-  nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
-  nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+  "nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+  "nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+  "nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
 
-  au! CursorHold *.vhd  execute ":call LanguageClient_textDocument_hover()"
-  au! CursorHold *.vhdl execute ":call LanguageClient_textDocument_hover()"
+  "au! CursorHold *.vhd  execute ":call LanguageClient_textDocument_hover()"
+  "au! CursorHold *.vhdl execute ":call LanguageClient_textDocument_hover()"
   " End LSP configuration
 
   " Deoplete async autocomplete
-  let g:deoplete#enable_at_startup = 1
-  let g:deoplete#file#enable_buffer_path = 1
+  "let g:deoplete#enable_at_startup = 1
+  "let g:deoplete#file#enable_buffer_path = 1
   " Close the preview windows when completion is done
-  autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+  "autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
   " Autocokpelte on TAB
-  inoremap <silent><expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-  inoremap <silent><expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
+  "inoremap <silent><expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+  "inoremap <silent><expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
   " Use <tab> and <S-tab> to navigate the completion list
-  inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-  inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+  "inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+  "inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
-endif
+"endif
+
+" CoC config
+set shortmess+=c
+set signcolumn=yes
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
+" Coc only does snippet and additional edit on confirm.
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" Or use `complete_info` if your vim support it, like:
+" inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" Use `[g` and `]g` to navigate diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Highlight symbol under cursor on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Remap for rename current word
+nmap <leader>rn <Plug>(coc-rename)
 
 
 " Functions and remaps
