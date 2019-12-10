@@ -113,7 +113,7 @@ else " VIM/GVIM
     " Vim/GVim Windows
     let s:editor_root=expand("~/vimfiles")
 
-    " Try to use Source Code  font
+    " Try to use Fira Code  font
     set anti enc=utf-8
     if has("gui_running")
       if has("gui_gtk2")
@@ -172,118 +172,10 @@ if empty(glob(s:editor_root . '/autoload/plug.vim'))
 endif
 call plug#begin(plugged_path)
 
-" Must have Plugs!
-Plug 'bling/vim-airline'
-Plug 'nathanaelkane/vim-indent-guides' "Show identation levels with different background colors
-Plug 'editorconfig/editorconfig-vim'
-Plug 'scrooloose/nerdtree'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " Fuzzy file finder
-Plug 'junegunn/fzf.vim'
-Plug 'https://gitlab.com/hauleth/qfx.vim.git' " Display signs in lines that have QuickFix entry
-Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] } " Vim plugin that shows keybindings in popup
-"autocmd! User vim-which-key call which#register(',', 'g:which_key_map')
-Plug 'wellle/targets.vim' " Additional text objects -> vat yi
-Plug 'rstacruz/vim-closer' " Autoclose pairs brakcets when press enter
-let g:closer_flags='{;'
-Plug 'jiangmiao/auto-pairs' " Autoclose pairs
-let g:AutoPairs={"(":")","'":"'",'"':'"', "`":"`", '```':'```', '"""':'"""', "'''":"'''"}
-Plug 'tpope/vim-surround' " add/change/delete surroding pairs -> dst
-"Allow to see registers with '"' or '@' in normal mode or <Ctrl-R> in insert
-"mode
-Plug 'junegunn/vim-peekaboo'
+" Load all plugins
+execute 'source ' . s:editor_root . '/plugins.vim'
 
-" Language autocomplete and Async completions {{
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
-"Plug 'w0rp/ale' " Async linting/fixing
-if has('nvim')
-  "Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  "Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-" }}
-
-" Git
-Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle'  }
-"Plug 'tpope/vim-git', { 'for': 'git' }
-"Plug 'tpope/vim-fugitive', { 'on': [ 'Gcommit', 'Gstatus', 'Gblame', 'Gdiff' ] }
-Plug 'airblade/vim-gitgutter'
-let g:gitgutter_max_signs=1024
-
-" Languages
-Plug 'dag/vim-fish'
-Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
-let g:vim_markdown_folding_disabled = 1
-let g:vim_markdown_folding_level = 2
-set conceallevel=2
-"Plug 'tpope/vim-markdown', { 'for': 'markdown' }
-if has('nvim')
-  function! BuildComposer(info)
-    if a:info.status != 'unchanged' || a:info.force
-      !cargo build --release
-    endif
-  endfunction
-  "Plug 'euclio/vim-markdown-composer', {'do': function('BuildComposer') }
-  let g:markdown_composer_browser = "firefox"
-endif
-Plug 'alvan/vim-closetag' "Autoclose html/xml tags
-let g:closetag_filenames = "*.html,*.xhtml,*.xml,*.vm,*.ftl,*.vue"
-
-" D Lang
-"if has('nvim')
-"  Plug 'landaire/deoplete-d', { 'for': 'd' }
-"endif
-
-" Web stuff
-Plug 'chrisbra/Colorizer', { 'for': ['less', 'scss', 'css', 'html', 'vue']}
-let g:colorizer_auto_filetype='css,less,scss,html,vue'
-
-Plug 'othree/html5.vim', { 'for': ['html', 'xhtml', 'vm', 'ftl', 'vue'] }
-Plug 'actionshrimp/vim-xpath', { 'for': ['xml', 'html', 'xhtml'] }
-
-Plug 'hail2u/vim-css3-syntax'
-Plug 'groenewege/vim-less', { 'for': ['less']}
-Plug 'cakebaker/scss-syntax.vim', { 'for': ['scss'] }
-Plug 'othree/csscomplete.vim', { 'for': ['less', 'scss', 'css', 'vue'] }
-
-Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'vue']}
-Plug 'heavenshell/vim-jsdoc', { 'for': ['javascript', 'vue'] }
-"if has('nvim')
-"  Plug 'carlitux/deoplete-ternjs'
-"  Plug 'ponko2/deoplete-fish'
-"endif
-
-"Plug 'yardnsm/vim-import-cost', { 'do': 'npm install' }
-Plug 'posva/vim-vue', {'for': 'vue'}
-
-" Java
-Plug 'artur-shaik/vim-javacomplete2'
-Plug 'lepture/vim-velocity'
-Plug 'andreshazard/vim-freemarker'
-
-" Color theme
-Plug 'haishanh/night-owl.vim'
-Plug 'reewr/vim-monokai-phoenix'
-
-" Vim using nice font icons!
-Plug 'ryanoasis/vim-devicons'
-
-" COC
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-let g:coc_global_extensions = [
-  \ 'coc-lists', 'coc-json', 'coc-highlight', 'coc-css', 'coc-eslint', 'coc-tsserver', 'coc-git', 'coc-yaml',
-  \ 'coc-vimlsp', 'coc-xml', 'coc-fish', 'coc-sh'
-  \]
-
-filetype plugin indent on                   " required!
-call plug#end()
-
-" Vundle ***********************************************************************
+" ******************************************************************************
 
 " Terminal stuff
 if has('nvim')
@@ -307,10 +199,8 @@ endfunction
 
 autocmd BufEnter * call NERDTreeRefresh()
 
-
 " Config Airline and status line
 set statusline+=\ %{&bomb?'BOM':''}
-"let g:airline#extensions#ale#enabled = 1
 let g:smartusline_string_to_highlight = '(%n) %f '
 set laststatus=2 " Seperate lines for state and mode
 let g:airline_powerline_fonts=1 " Powerline simbols. Hermit font support it
@@ -329,100 +219,13 @@ let g:indent_guides_auto_colors = 0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd guibg='#202020' ctermbg=darkgrey
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg='#101010'
 
-" Ale - Asynchronus Linting Engine
 "let g:ale_sign_column_always = 1
 "let g:ale_sign_error = 'E' "'❌'
 "let g:ale_sign_warning = '!'
-"let b:ale_fixers = {'javascript': ['prettier', 'eslint']}
 
-" Autocomplete
-"if has('nvim')
-  " Begin LSP configuration
-  "let g:LanguageClient_serverCommands = {
-  "  \ 'vhdl': ['vhdl-tool', 'lsp']
-  "    \ }
+" Load all Coc config and mapping stuff
+execute 'source ' . s:editor_root . '/coc-config.vim'
 
-  "let g:LanguageClient_autoStart = 1
-
-  "nnoremap <F5> :call LanguageClient_contextMenu()<CR>
-  "nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
-  "nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
-
-  "au! CursorHold *.vhd  execute ":call LanguageClient_textDocument_hover()"
-  "au! CursorHold *.vhdl execute ":call LanguageClient_textDocument_hover()"
-  " End LSP configuration
-
-  " Deoplete async autocomplete
-  "let g:deoplete#enable_at_startup = 1
-  "let g:deoplete#file#enable_buffer_path = 1
-  " Close the preview windows when completion is done
-  "autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
-
-  " Autocokpelte on TAB
-  "inoremap <silent><expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-  "inoremap <silent><expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
-  " Use <tab> and <S-tab> to navigate the completion list
-  "inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-  "inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
-"endif
-
-" CoC config
-set shortmess+=c
-set signcolumn=yes
-" Use tab for trigger completion with characters ahead and navigate.
-" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-" Use <c-space> to trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
-
-" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
-" Coc only does snippet and additional edit on confirm.
-"inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-" Or use `complete_info` if your vim support it, like:
-" inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-
-" Use `[g` and `]g` to navigate diagnostics
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
-
-" Remap keys for gotos
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
-" Use K to show documentation in preview window
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
-
-" Remap for rename current word
-nmap <leader>rn <Plug>(coc-rename)
-
-" CoC extensions
-
-" Highlight symbol under cursor on CursorHold
-autocmd CursorHold * silent call CocActionAsync('highlight')
-
-
-" ****************************************************************************
 " Functions and remaps
 command! WQ wq
 command! Wq wq
