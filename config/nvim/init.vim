@@ -58,7 +58,7 @@ set wildmenu
 set laststatus=2 " Seperate lines for state and mode
 set showmode " Show current mode in the status line.
 set showcmd " Show the command in the status line.
-set cmdheight=2 "Better display for messages 
+set cmdheight=2 "Better display for messages
 set updatetime=300
 
 " Show vertical guides at 80 and 120, highlight characters that go over 120 columns (by drawing a border on the 121st)
@@ -209,8 +209,8 @@ endif
 
 " Git
 Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle'  }
-Plug 'tpope/vim-git', { 'for': 'git' }
-Plug 'tpope/vim-fugitive', { 'on': [ 'Gcommit', 'Gstatus', 'Gblame', 'Gdiff' ] }
+"Plug 'tpope/vim-git', { 'for': 'git' }
+"Plug 'tpope/vim-fugitive', { 'on': [ 'Gcommit', 'Gstatus', 'Gblame', 'Gdiff' ] }
 Plug 'airblade/vim-gitgutter'
 let g:gitgutter_max_signs=1024
 
@@ -384,7 +384,7 @@ inoremap <silent><expr> <c-space> coc#refresh()
 
 " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
 " Coc only does snippet and additional edit on confirm.
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+"inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 " Or use `complete_info` if your vim support it, like:
 " inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
 
@@ -415,7 +415,10 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 " Remap for rename current word
 nmap <leader>rn <Plug>(coc-rename)
 
+" CoC plugins
 
+
+" ****************************************************************************
 " Functions and remaps
 command! WQ wq
 command! Wq wq
