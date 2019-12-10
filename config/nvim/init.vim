@@ -275,6 +275,7 @@ Plug 'ryanoasis/vim-devicons'
 
 " COC
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+let g:coc_global_extensions = ['coc-lists', 'coc-json', 'coc-highlight', 'coc-css', 'coc-eslint', 'coc-tsserver', 'coc-git']
 
 filetype plugin indent on                   " required!
 call plug#end()
