@@ -10,8 +10,8 @@ Plug 'https://gitlab.com/hauleth/qfx.vim.git' " Display signs in lines that have
 Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] } " Vim plugin that shows keybindings in popup
 "autocmd! User vim-which-key call which#register(',', 'g:which_key_map')
 Plug 'wellle/targets.vim' " Additional text objects -> vat yi
-Plug 'rstacruz/vim-closer' " Autoclose pairs brackets when press enter
-let g:closer_flags='{;'
+"Plug 'rstacruz/vim-closer' " Autoclose pairs brackets when press enter
+"let g:closer_flags='{;'
 "Plug 'jiangmiao/auto-pairs' " Autoclose pairs
 "let g:AutoPairs={"(":")","'":"'",'"':'"', "`":"`", '```':'```', '"""':'"""', "'''":"'''"}
 Plug 'tpope/vim-surround' " add/change/delete surroding pairs -> dst
