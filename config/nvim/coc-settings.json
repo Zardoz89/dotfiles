@@ -1,0 +1,10 @@
+{
+  // diagnostic
+  "diagnostic.infoSign":            "ღ",
+  "diagnostic.hintSign":            "ஐ",
+  "diagnostic.warningSign":         "⚠",
+  "diagnostic.errorSign":           "✖",
+  "diagnostic.enable":              true,
+  // Java home
+  "xml.java.home":"/usr/lib/jvm/java-11-openjdk-amd64"
+}
