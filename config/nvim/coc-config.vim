@@ -23,15 +23,19 @@ inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 " Or use `complete_info` if your vim support it, like:
 " inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
 
-" Use `[g` and `]g` to navigate diagnostics
+" === Diagnostics ===
+" Use <leader>e to show diagnostics
+nmap <silent> <leader>E :CocList diagnostics<CR>
+nmap <silent> <leader>e :CocList diagnostics<CR>
+" Use <leader>n` and <leader>N to navigate diagnostics
 nmap <silent> <leader>N <Plug>(coc-diagnostic-prev)
 nmap <silent> <leader>n <Plug>(coc-diagnostic-next)
 
 " Remap keys for gotos
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
+nmap <silent> <leader>dd <Plug>(coc-definition)
+nmap <silent> <leader>dy <Plug>(coc-type-definition)
+nmap <silent> <leader>dj <Plug>(coc-implementation)
+nmap <silent> <leader>dr <Plug>(coc-references)
 
 " Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>

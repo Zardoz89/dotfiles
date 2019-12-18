@@ -219,9 +219,9 @@ let g:indent_guides_auto_colors = 0
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd guibg='#202020' ctermbg=darkgrey
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg='#101010'
 
-"let g:ale_sign_column_always = 1
-"let g:ale_sign_error = 'E' "'❌'
-"let g:ale_sign_warning = '!'
+" === echodoc === "
+" Enable echodoc on startup
+let g:echodoc#enable_at_startup = 1
 
 " Load all Coc config and mapping stuff
 execute 'source ' . s:editor_root . '/coc-config.vim'
@@ -234,6 +234,10 @@ command! Q q
 
 " black hole
 map <leader>b "_
+" Delete current visual selection and dump in black hole buffer before pasting
+" Used when you want to paste over something without it getting copied to
+" Vim's default buffer
+vnoremap <leader>p "_dP
 
 " Ctrl-S to save file
 nmap <C-s> :w<CR>

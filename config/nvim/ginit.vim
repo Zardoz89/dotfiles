@@ -1,7 +1,7 @@
 " font setup for gvim by luc
 
 let s:fonts = [
-      \ ['FuraCode Nerd Font Mono',       10, 25],
+      \ ['FuraCode Nerd Font',       10, 25],
       \ ['Fira Code',                10, 25],
       \ ['Hack',                     10, 25],
       \ ['Source Code Pro',          10, 25],
@@ -32,9 +32,9 @@ inoremap <silent>  <S-Insert>  <C-R>+
 
 if exists('g:GtkGuiLoaded') " neovim-gtk
   let g:GuiInternalClipboard = 1
-  call rpcnotify(1, 'Gui', 'Font', 'FuraCode Nerd Font Mono 10')
+  call rpcnotify(1, 'Gui', 'Font', 'FuraCode Nerd Font 10')
 else
-  Guifont! FuraCode Nerd Font Mono:h10
+  Guifont! FuraCode Nerd Font:h10
 endif
 
 " Shift+Insert on neovim-gtk

@@ -66,6 +66,9 @@ Plug 'reewr/vim-monokai-phoenix'
 " Vim using nice font icons!
 Plug 'ryanoasis/vim-devicons'
 
+" Print function signatures in echo area
+Plug 'Shougo/echodoc.vim'
+
 " COC
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 let g:coc_global_extensions = [
