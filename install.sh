@@ -18,6 +18,9 @@ ln -sf ${DIR}/gitconfig-work ~/.gitconfig-work
 mkdir -p ~/.config/nvim
 ln -sf ${DIR}/config/nvim/init.vim ~/.config/nvim/init.vim
 ln -sf ${DIR}/config/nvim/ginit.vim ~/.config/nvim/ginit.vim
+ln -sf ${DIR}/config/nvim/plugins.vim ~/.config/nvim/plugins.vim
+ln -sf ${DIR}/config/nvim/coc-settings.json ~/.config/nvim/coc-settings.json
+ln -sf ${DIR}/config/nvim/coc-config.vim ~/.config/nvim/coc-config.vim
 ln -sf ${DIR}/config/nvim/init.vim ~/.vimrc
 
 mkdir -p ~/.config/fish
