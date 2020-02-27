@@ -308,6 +308,20 @@ nnoremap <silent> <Leader>ml :call AppendModeline()<CR><Paste>
 vnoremap < <gv
 vnoremap > >gv
 
+" Try to auto set encoding for working with old 8bit encodings
+function! CheckFileEncoding()
+  if exists('b:fenc_at_read') && &fileencoding != b:fenc_at_read
+    exec 'e! ++enc=' . &fileencoding
+    unlet b:fenc_at_read
+  endif
+endfunction
+au BufRead     *.txt let b:fenc_at_read=&fileencoding
+au BufWinEnter *.txt call CheckFileEncoding()
+au BufRead     *.prg let b:fenc_at_read=&fileencoding
+au BufWinEnter *.prg call CheckFileEncoding()
+au BufRead     *.csv let b:fenc_at_read=&fileencoding
+au BufWinEnter *.csv call CheckFileEncoding()
+
 
 " Setup color scheme
 syntax enable
