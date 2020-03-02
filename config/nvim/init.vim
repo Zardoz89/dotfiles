@@ -321,6 +321,12 @@ au BufRead     *.prg let b:fenc_at_read=&fileencoding
 au BufWinEnter *.prg call CheckFileEncoding()
 au BufRead     *.csv let b:fenc_at_read=&fileencoding
 au BufWinEnter *.csv call CheckFileEncoding()
+au BufRead     *.cpp let b:fenc_at_read=&fileencoding
+au BufWinEnter *.cpp call CheckFileEncoding()
+au BufRead     *.h let b:fenc_at_read=&fileencoding
+au BufWinEnter *.h call CheckFileEncoding()
+au BufRead     makefile let b:fenc_at_read=&fileencoding
+au BufWinEnter makefile call CheckFileEncoding()
 
 
 " Setup color scheme
