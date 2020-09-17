@@ -147,7 +147,8 @@ if has('persistent_undo')
   set undolevels=1000
   set undoreload=10000
 
-  set backupdir=./.backup,.,$TEMP,$TMP
+  set backupdir=.,~/.local/share/nvim/backup,$TEMP,$TMP
+  "./.backup,.,$TEMP,$TMP
   set directory=.,./.swp,$TEMP,$TMP
 endif
 
