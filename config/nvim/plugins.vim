@@ -35,6 +35,7 @@ Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_folding_level = 2
 set conceallevel=2
+Plug 'JamshedVesuna/vim-markdown-preview', { 'for': 'markdown'}
 Plug 'alvan/vim-closetag' "Autoclose html/xml tags
 let g:closetag_filenames = "*.html,*.xhtml,*.xml,*.vm,*.ftl,*.vue"
 
