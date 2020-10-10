@@ -60,6 +60,9 @@ Plug 'artur-shaik/vim-javacomplete2'
 Plug 'lepture/vim-velocity'
 Plug 'andreshazard/vim-freemarker'
 
+" DIV Games Studio
+Plug 'Zardoz89/vim-div'
+
 " Color theme
 Plug 'haishanh/night-owl.vim'
 Plug 'reewr/vim-monokai-phoenix'
