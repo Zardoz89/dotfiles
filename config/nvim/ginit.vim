@@ -1,13 +1,13 @@
 " foot setup for gvim by luc
 
 let s:fonts = [
-      \ ['FuraCode Nerd Font',       11],
-      \ ['Fira Code',                11],
-      \ ['Hack',                     11],
-      \ ['Source Code Pro',          11],
-      \ ['Monospace',                11],
-      \ ['inconsolata',              12],
-      \ ['dejavu sans mono',         12]
+      \ ['FuraCode Nerd Font',       10],
+      \ ['Fira Code',                10],
+      \ ['Hack',                     10],
+      \ ['Source Code Pro',          10],
+      \ ['Monospace',                10],
+      \ ['inconsolata',              11],
+      \ ['dejavu sans mono',         11]
       \ ]
 
 " Disable anoying GUI tabline
