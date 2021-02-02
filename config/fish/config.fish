@@ -52,8 +52,16 @@ function JAVA_11 --description 'Sets JAVA_HOME to Java OpenJDK 11'
     set -gx JAVA_HOME /usr/lib/jvm/java-11-openjdk-amd64/
     alias java "/usr/lib/jvm/java-11-openjdk-amd64/bin/java"
     alias javac "/usr/lib/jvm/java-11-openjdk-amd64/bin/javac"
-end
+  end
 end
 
+function JAVA_14 --description 'Sets JAVA_HOME to Java OpenJDK 14'
+  if test -d /usr/lib/jvm/java-14-openjdk-amd64/
+    echo "Setting OpenJDK Java 14"
+    set -gx JAVA_HOME /usr/lib/jvm/java-14-openjdk-amd64/
+    alias java "/usr/lib/jvm/java-14-openjdk-amd64/bin/java"
+    alias javac "/usr/lib/jvm/java-14-openjdk-amd64/bin/javac"
+  end
+end
 # Alias                                                                                                           
 
