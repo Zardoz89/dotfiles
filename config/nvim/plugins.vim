@@ -40,8 +40,7 @@ Plug 'alvan/vim-closetag' "Autoclose html/xml tags
 let g:closetag_filenames = "*.html,*.xhtml,*.xml,*.vm,*.ftl,*.vue"
 
 " Web stuff
-Plug 'chrisbra/Colorizer', { 'for': ['less', 'scss', 'css', 'html', 'vue']}
-let g:colorizer_auto_filetype='css,less,scss,html,vue'
+Plug 'norcalli/nvim-colorizer.lua', { 'for': ['less', 'scss', 'css', 'html', 'vue', 'js']}
 
 Plug 'othree/html5.vim', { 'for': ['html', 'xhtml', 'vm', 'ftl', 'vue'] }
 Plug 'actionshrimp/vim-xpath', { 'for': ['xml', 'html', 'xhtml'] }
