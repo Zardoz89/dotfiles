@@ -15,5 +15,7 @@
   fsckobjects = true
 [push]
   default = simple
+[pull]
+  ff = only
 [core]
   editor = nvim

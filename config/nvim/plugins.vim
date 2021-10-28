@@ -64,7 +64,7 @@ Plug 'Zardoz89/vim-div'
 
 " Color theme
 Plug 'haishanh/night-owl.vim'
-Plug 'reewr/vim-monokai-phoenix'
+Plug 'tomasr/molokai'
 
 " Vim using nice font icons!
 Plug 'ryanoasis/vim-devicons'
