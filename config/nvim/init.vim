@@ -334,8 +334,8 @@ au BufWinEnter makefile call CheckFileEncoding()
 syntax enable
 set background=dark
 try
-  colorscheme night-owl
-  "colorscheme molokai
+  "colorscheme night-owl
+  colorscheme molokai
 catch /^Vim\%((\a\+)\)\=:E185/
   colors darkblue   " Fallback to darkblue
 endtry
