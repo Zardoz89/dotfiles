@@ -136,21 +136,21 @@ else " VIM/GVIM
 endif
 
 " Config permanet undo files and backup storage
-if has('persistent_undo')
-  let undo_path=s:editor_root . '/undodir'
-  " Ensure all needed directories exist
-  if empty(glob(undo_path . '/'))
-    call mkdir(undo_path, "p")
-  endif
-  let &undodir = undo_path
-  set undofile
-  set undolevels=1000
-  set undoreload=10000
-
-  set backupdir=.,~/.local/share/nvim/backup,$TEMP,$TMP
-  "./.backup,.,$TEMP,$TMP
-  set directory=.,./.swp,$TEMP,$TMP
-endif
+" if has('persistent_undo')
+"   let undo_path=s:editor_root . '/undodir'
+"   " Ensure all needed directories exist
+"   if empty(glob(undo_path . '/'))
+"     call mkdir(undo_path, "p")
+"   endif
+"   let &undodir = undo_path
+"   set undofile
+"   set undolevels=1000
+"   set undoreload=10000
+" 
+"   set backupdir=.,~/.local/share/nvim/backup,$TEMP,$TMP
+"   "./.backup,.,$TEMP,$TMP
+"   set directory=.,./.swp,$TEMP,$TMP
+" endif
 
 " Title
 if &term == "screen"
@@ -217,8 +217,8 @@ let java_highlight_functions = 1
 " Enable indent guides on boot and allow colorschemes to style them.
 let g:indent_guides_enable_on_vim_startup=1
 let g:indent_guides_auto_colors = 0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd guibg='#202020' ctermbg=darkgrey
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg='#101010'
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd guibg=bg
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg='#0B0D0E' ctermbg=darkgrey
 
 " === echodoc === "
 " Enable echodoc on startup
@@ -286,7 +286,7 @@ nnoremap <Leader><Right>  <C-W><Right>
 nnoremap <silent> <Leader>tl :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 nnoremap <silent> <Leader>rt :let _s=@/<Bar>:%s/\t/    /g<CR>:let @/=_s<Bar>:nohl<CR>
 
-" Debug syntax 
+" Debug syntax
 map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
 \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
@@ -345,5 +345,9 @@ endtry
 highlight ColorColumn ctermbg=red ctermfg=white guibg=#351818
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 match OverLength /\%121v.\+/
+
+" Fix anoying bug hanging nvim with the external USB driver automount
+set shada+=r/mnt/backup
+set shada+=r/mnt/dgb
 
 " vim: set ts=2 sw=2 tw=78 et :
