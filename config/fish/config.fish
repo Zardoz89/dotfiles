@@ -1,9 +1,8 @@
 # Bootstrap fisherman
 if not functions -q fisher
     set -q XDG_CONFIG_HOME; or set XDG_CONFIG_HOME ~/.config
-    curl https://git.io/fisher --create-dirs -sLo $XDG_CONFIG_HOME/fish/functions/fisher.fish
-    fish -c fisher
-    fisher add hauleth/agnoster
+    curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
+    fisher install hauleth/agnoster
     agnoster powerline
 end
 
@@ -30,7 +29,9 @@ function ssh_agent --description 'launch the ssh-agent and add the id_rsa identi
     ssh-add -l | grep -q $fingerprint
         or ssh-add $identity
 end
-ssh_agent
+if status --is-interactive
+  ssh_agent
+end
 
 if test -d $HOME/.cargo/env
   source $HOME/.cargo/env
@@ -73,6 +74,8 @@ function JAVA_17 --description 'Sets JAVA_HOME to Java OpenJDK 17'
   end
 end
 
-JAVA_11
+if status --is-interactive
+  JAVA_11
+end
 # Alias                                                                                                           
 
