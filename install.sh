@@ -25,7 +25,6 @@ ln -sf ${DIR}/config/nvim/init.vim ~/.vimrc
 
 mkdir -p ~/.config/fish
 ln -sf ${DIR}/config/fish/config.fish ~/.config/fish/config.fish
-ln -sf ${DIR}/config/fish/fishfile ~/.config/fish/fishfile
 
 #mkdir -p ~/.kde/share/apps/konsole
 #ln -sf ${DIR}/kde/share/apps/konsole/WhiteOnBlack.colorscheme ~/.kde/share/apps/konsole/WhiteOnBlack.colorscheme
@@ -40,8 +39,10 @@ ln -sf ${DIR}/kde/share/apps/konsole/Mio.colorscheme          ~/.local/share/kon
 ln -sf ${DIR}/kde/share/apps/konsole/Shell.profile            ~/.local/share/konsole/Shell.profile
 ln -sf ${DIR}/kde/share/apps/konsole/Fish.profile             ~/.local/share/konsole/Fish.profile
 
+# Install fisher
+curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
 
-# Install fish extensions
+# Install fish plugins
 fisher install hauleth/agnoster
 
 # Install nvm
