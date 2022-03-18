@@ -41,6 +41,9 @@ ln -sf ${DIR}/kde/share/apps/konsole/Shell.profile            ~/.local/share/kon
 ln -sf ${DIR}/kde/share/apps/konsole/Fish.profile             ~/.local/share/konsole/Fish.profile
 
 
+# Install fish extensions
+fisher install hauleth/agnoster
+
 # Install nvm
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 fisher install FabioAntunes/fish-nvm edc/bass
