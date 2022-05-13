@@ -12,7 +12,6 @@ function most_pager --description 'sets most as man pager if is installed'
     set -g -x MANPAGER most
   end
 end
-most_pager
 
 function ssh_agent --description 'launch the ssh-agent and add the id_rsa identity'
     if begin
@@ -24,13 +23,18 @@ function ssh_agent --description 'launch the ssh-agent and add the id_rsa identi
     else
         eval (command ssh-agent -c | sed 's/^setenv/set -Ux/')
     end
-    set -l identity $HOME/.ssh/id_rsa
-    set -l fingerprint (ssh-keygen -lf $identity | awk '{print $2}')
-    ssh-add -l | grep -q $fingerprint
-        or ssh-add $identity
-end
-if status --is-interactive
-  ssh_agent
+    if test -f $HOME/.ssh/id_rsa
+      set -l identity $HOME/.ssh/id_rsa
+      set -l fingerprint (ssh-keygen -lf $identity | awk '{print $2}')
+      ssh-add -l | grep -q $fingerprint
+          or ssh-add $identity
+    end
+    if test -f $HOME/.ssh/id_ecdsa
+      set -l identity $HOME/.ssh/id_ecdsa
+      set -l fingerprint (ssh-keygen -lf $identity | awk '{print $2}')
+      ssh-add -l | grep -q $fingerprint
+          or ssh-add $identity
+    end
 end
 
 if test -d $HOME/.cargo/env
@@ -75,6 +79,8 @@ function JAVA_17 --description 'Sets JAVA_HOME to Java OpenJDK 17'
 end
 
 if status --is-interactive
+  most_pager
+  ssh_agent
   JAVA_11
 end
 # Alias                                                                                                           
