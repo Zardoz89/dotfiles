@@ -102,5 +102,14 @@ if status --is-interactive
   ssh_agent
   JAVA_11
 end
+
+# Config bun
+if test -d $HOME/.bun
+  set -gx BUN_INSTALL $HOME/.bun
+  fish_add_path -g $BUN_INSTALL/bin
+  #PATH="$BUN_INSTALL/bin:$PATH"
+end
+
+
 # Alias                                                                                                           
 
