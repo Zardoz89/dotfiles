@@ -78,6 +78,25 @@ function JAVA_17 --description 'Sets JAVA_HOME to Java OpenJDK 17'
   end
 end
 
+function MAVEN --description 'Sets default maven'
+  if set -l ind (contains -i -- /opt/maven-3.8.6/bin $PATH)
+    set -e PATH[$ind]
+    set -gu M2_HOME
+    set -gu M2
+  end
+end
+
+function MAVEN_38 --description 'Sets default maven'
+  if test -d /opt/maven-3.8.6/
+    echo "Setting Maven 3.8.6"
+    set -gx M2_HOME /opt/maven-3.8.6
+    set -gx M2 $M2_HOME/bin
+    #alias mvn "$M2/mvn"
+    #alias mvnDebug "$M2/mvnDebug"
+    fish_add_path $M2
+  end
+end
+
 if status --is-interactive
   most_pager
   ssh_agent
