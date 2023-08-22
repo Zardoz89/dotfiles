@@ -90,6 +90,11 @@ if test -d $HOME/.bun
   #PATH="$BUN_INSTALL/bin:$PATH"
 end
 
+# Config cargo/rust
+if test -d $HOME/.cargo/env
+  source $HOME/.cargo/env
+end
+
 
 # Alias                                                                                                           
 
