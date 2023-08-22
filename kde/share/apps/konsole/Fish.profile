@@ -1,7 +1,7 @@
 [Appearance]
 AntiAliasFonts=true
 ColorScheme=Mio
-Font=FuraCode Nerd Font,10,-1,5,25,0,0,0,0,0,Light
+Font=FiraCode Nerd Font Mono Ret,10,-1,5,53,0,0,0,0,0,Regular
 
 [Cursor Options]
 CustomCursorColor=255,255,255

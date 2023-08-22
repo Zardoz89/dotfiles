@@ -1,7 +1,7 @@
 " foot setup for gvim by luc
 
 let s:fonts = [
-      \ ['FuraCode Nerd Font',       10],
+      \ ['FiraCode Nerd Font Mono',       10],
       \ ['Fira Code',                10],
       \ ['Hack',                     10],
       \ ['Source Code Pro',          10],
@@ -28,7 +28,7 @@ elseif exists('g:GtkGuiLoaded') " neovim-gtk
   let g:GuiInternalClipboard = 1
   call rpcnotify(1, 'Gui', 'Font', s:fonts[0][0] . " " . s:fonts[0][1])
 
-else " neovim-qt
+elseif exists(':GuiFont') " neovim-qt
   let s:setFont = 'GuiFont! ' . s:fonts[0][0] . ":h" . s:fonts[0][1]
   execute s:setFont
 endif
