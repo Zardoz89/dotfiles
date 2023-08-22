@@ -16,34 +16,29 @@ function most_pager --description 'sets most as man pager if is installed'
   end
 end
 
-function ssh_agent --description 'launch the ssh-agent and add the id_rsa identity'
-    if begin
-            set -q SSH_AGENT_PID
-            and kill -0 $SSH_AGENT_PID
-            and grep -q '^ssh-agent' /proc/$SSH_AGENT_PID/cmdline
-          end
-        echo "ssh-agent running on pid $SSH_AGENT_PID"
-    else
-        eval (command ssh-agent -c | sed 's/^setenv/set -Ux/')
-    end
-    if test -f $HOME/.ssh/id_rsa
-      set -l identity $HOME/.ssh/id_rsa
-      set -l fingerprint (ssh-keygen -lf $identity | awk '{print $2}')
-      ssh-add -l | grep -q $fingerprint
-          or ssh-add $identity
-    end
-    if test -f $HOME/.ssh/id_ecdsa
-      set -l identity $HOME/.ssh/id_ecdsa
-      set -l fingerprint (ssh-keygen -lf $identity | awk '{print $2}')
-      ssh-add -l | grep -q $fingerprint
-          or ssh-add $identity
-    end
+function ssh_agent --description 'add the ssh keys to the ssh_agent'
+  # if begin
+  #     set -q SSH_AGENT_PID
+  #       and kill -0 $SSH_AGENT_PID
+  #       and grep -q '^ssh-agent' /proc/$SSH_AGENT_PID/cmdline
+  #     end
+  #   echo "ssh-agent running on pid $SSH_AGENT_PID"
+  # else
+  #   eval (command ssh-agent -c | sed 's/^setenv/set -Ux/')
+  # end
+  if test -f $HOME/.ssh/id_rsa
+    set -l identity $HOME/.ssh/id_rsa
+    set -l fingerprint (ssh-keygen -lf $identity | awk '{print $2}')
+    ssh-add -l | grep -q $fingerprint
+      or ssh-add $identity
+  end
+  if test -f $HOME/.ssh/id_ecdsa
+    set -l identity $HOME/.ssh/id_ecdsa
+    set -l fingerprint (ssh-keygen -lf $identity | awk '{print $2}')
+    ssh-add -l | grep -q $fingerprint
+      or ssh-add $identity
+  end
 end
-
-if test -d $HOME/.cargo/env
-  source $HOME/.cargo/env
-end
-
 
 function JAVA_ORACLE_8 --description 'Sets JAVA_HOME to Java Oracle 8'
   if test -d /usr/lib/jvm/java-8-oracle
