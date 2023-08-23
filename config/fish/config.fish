@@ -3,9 +3,20 @@ function install_fisher --description 'Installs fisher and dependencies'
   if not functions -q fisher
       set -q XDG_CONFIG_HOME; or set XDG_CONFIG_HOME ~/.config
       curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
-      fisher install hauleth/agnoster
+      # fisher install hauleth/agnoster
       fisher install jorgebucaran/nvm.fish
-      agnoster powerline
+      # agnoster powerline
+  end
+end
+
+function install_starship --description 'Installs starship prompt'
+  if not type -q starship
+    curl -sS https://starship.rs/install.sh | sh
+  end
+
+  # Starship
+  if type -q starship
+    starship init fish | source
   end
 end
 
@@ -17,15 +28,6 @@ function most_pager --description 'sets most as man pager if is installed'
 end
 
 function ssh_agent --description 'add the ssh keys to the ssh_agent'
-  # if begin
-  #     set -q SSH_AGENT_PID
-  #       and kill -0 $SSH_AGENT_PID
-  #       and grep -q '^ssh-agent' /proc/$SSH_AGENT_PID/cmdline
-  #     end
-  #   echo "ssh-agent running on pid $SSH_AGENT_PID"
-  # else
-  #   eval (command ssh-agent -c | sed 's/^setenv/set -Ux/')
-  # end
   if test -f $HOME/.ssh/id_rsa
     set -l identity $HOME/.ssh/id_rsa
     set -l fingerprint (ssh-keygen -lf $identity | awk '{print $2}')
@@ -78,6 +80,7 @@ end
 
 if status --is-interactive
   install_fisher
+  install_starship
   most_pager
   ssh_agent
   JAVA_11
@@ -96,5 +99,7 @@ if test -d $HOME/.cargo/env
 end
 
 
-# Alias                                                                                                           
+# Alias
+
+
 
