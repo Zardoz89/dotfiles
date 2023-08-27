@@ -151,6 +151,7 @@ endif
 "   "./.backup,.,$TEMP,$TMP
 "   set directory=.,./.swp,$TEMP,$TMP
 " endif
+set backupcopy=yes
 
 " Title
 if &term == "screen"
