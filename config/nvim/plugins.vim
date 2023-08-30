@@ -1,7 +1,7 @@
 
 " Must have Plugs!
 Plug 'bling/vim-airline'
-Plug 'nathanaelkane/vim-indent-guides' "Show identation levels with different background colors
+"Plug 'nathanaelkane/vim-indent-guides' "Show identation levels with different background colors
 Plug 'editorconfig/editorconfig-vim'
 Plug 'scrooloose/nerdtree'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " Fuzzy file finder
@@ -76,7 +76,7 @@ Plug 'Shougo/echodoc.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 let g:coc_global_extensions = [
   \ 'coc-lists', 'coc-json', 'coc-highlight', 'coc-css', 'coc-eslint', 'coc-tsserver', 'coc-git', 'coc-yaml',
-  \ 'coc-vimlsp', 'coc-xml', 'coc-fish', 'coc-sh'
+  \ 'coc-xml', 'coc-fish', 'coc-sh'
   \]
 
 filetype plugin indent on                   " required!

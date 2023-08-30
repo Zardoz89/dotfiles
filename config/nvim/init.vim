@@ -41,6 +41,7 @@ set pastetoggle=<F2> " Use F2 to do Ctrl+V from console
 
 set number " show line number
 set ru " Ruler active
+set signcolumn=yes
 
 " Folding
 set foldmethod=syntax
