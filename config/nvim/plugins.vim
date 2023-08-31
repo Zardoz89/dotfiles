@@ -76,7 +76,7 @@ Plug 'Shougo/echodoc.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 let g:coc_global_extensions = [
   \ 'coc-lists', 'coc-json', 'coc-highlight', 'coc-css', 'coc-eslint', 'coc-tsserver', 'coc-git', 'coc-yaml',
-  \ 'coc-xml', 'coc-fish', 'coc-sh'
+  \ 'coc-vimlsp', 'coc-xml', 'coc-fish', 'coc-sh'
   \]
 
 filetype plugin indent on                   " required!
