@@ -1,7 +1,6 @@
 
 " Must have Plugs!
 Plug 'bling/vim-airline'
-"Plug 'nathanaelkane/vim-indent-guides' "Show identation levels with different background colors
 Plug 'editorconfig/editorconfig-vim'
 Plug 'scrooloose/nerdtree'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " Fuzzy file finder
@@ -18,9 +17,12 @@ Plug 'tpope/vim-surround' " add/change/delete surroding pairs -> dst
 "Allow to see registers with '"' or '@' in normal mode or <Ctrl-R> in insert mode
 Plug 'junegunn/vim-peekaboo'
 
-if !has('nvim')
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
+if has('nvim')
+  "Plug 'roxma/nvim-yarp'
+  "Plug 'roxma/vim-hug-neovim-rpc'
+  Plug 'lukas-reineke/indent-blankline.nvim'
+else
+  Plug 'nathanaelkane/vim-indent-guides' "Show identation levels with different background colors
 endif
 
 " Git
@@ -72,7 +74,7 @@ Plug 'ryanoasis/vim-devicons'
 " Print function signatures in echo area
 Plug 'Shougo/echodoc.vim'
 
-" COC
+" Coc
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 let g:coc_global_extensions = [
   \ 'coc-lists', 'coc-json', 'coc-highlight', 'coc-css', 'coc-eslint', 'coc-tsserver', 'coc-git', 'coc-yaml',

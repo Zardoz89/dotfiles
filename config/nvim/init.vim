@@ -30,7 +30,7 @@ set shiftround " round indent to multiple of 'shiftwidth'
 set expandtab " Pressing <Tab> puts spaces, and < or > for indenting
 
 " Display tabs and trailing spaces visually
-set list listchars=tab:‣\ ,nbsp:␣,extends:▶,trail:·,eol:¶
+set list listchars=tab:‣\ ,nbsp:␣,extends:▶,trail:·,eol:↴
 let &showbreak = '↳ '"'←'
 
 set hidden     " Not close buffer, only hide it
@@ -215,11 +215,18 @@ let g:javascript_plugin_jsdoc = 1
 " Java Syntax colors
 let java_highlight_functions = 1
 
-" Enable indent guides on boot and allow colorschemes to style them.
-let g:indent_guides_enable_on_vim_startup=1
-let g:indent_guides_auto_colors = 0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd guibg=bg
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg='#0B0D0E' ctermbg=darkgrey
+if has('nvim')
+  " indent-blankline confige
+  " TODO Why are all fucking examples using LUA ?
+else
+  " Enable indent guides on boot and allow colorschemes to style them.
+  let g:indent_guides_enable_on_vim_startup=1
+  let g:indent_guides_auto_colors = 0
+  autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd guibg=bg
+  autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg='#0B0D0E' ctermbg=darkgrey
+endif
+
+
 
 " === echodoc === "
 " Enable echodoc on startup
@@ -350,5 +357,7 @@ match OverLength /\%121v.\+/
 " Fix anoying bug hanging nvim with the external USB driver automount
 set shada+=r/mnt/backup
 set shada+=r/mnt/dgb
+
+
 
 " vim: set ts=2 sw=2 tw=78 et :
