@@ -103,3 +103,6 @@ end
 
 
 
+
+# Created by `pipx` on 2023-09-21 05:53:26
+set PATH $PATH /home/luis/.local/bin
