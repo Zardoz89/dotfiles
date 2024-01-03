@@ -57,15 +57,9 @@ function JAVA_11 --description 'Sets JAVA_HOME to Java OpenJDK 11'
     set -gx JAVA_HOME /usr/lib/jvm/java-11-openjdk-amd64/
     alias java "/usr/lib/jvm/java-11-openjdk-amd64/bin/java"
     alias javac "/usr/lib/jvm/java-11-openjdk-amd64/bin/javac"
-  end
-end
-
-function JAVA_14 --description 'Sets JAVA_HOME to Java OpenJDK 14'
-  if test -d /usr/lib/jvm/java-14-openjdk-amd64/
-    echo "Setting OpenJDK Java 14"
-    set -gx JAVA_HOME /usr/lib/jvm/java-14-openjdk-amd64/
-    alias java "/usr/lib/jvm/java-14-openjdk-amd64/bin/java"
-    alias javac "/usr/lib/jvm/java-14-openjdk-amd64/bin/javac"
+    alias jshell "/usr/lib/jvm/java-11-openjdk-amd64/bin/jshell"
+    alias jps "/usr/lib/jvm/java-11-openjdk-amd64/bin/jps"
+    alias jstat "/usr/lib/jvm/java-11-openjdk-amd64/bin/jstat"
   end
 end
 
@@ -75,6 +69,33 @@ function JAVA_17 --description 'Sets JAVA_HOME to Java OpenJDK 17'
     set -gx JAVA_HOME /usr/lib/jvm/java-17-openjdk-amd64/
     alias java "/usr/lib/jvm/java-17-openjdk-amd64/bin/java"
     alias javac "/usr/lib/jvm/java-17-openjdk-amd64/bin/javac"
+    alias jshell "/usr/lib/jvm/java-17-openjdk-amd64/bin/jshell"
+    alias jps "/usr/lib/jvm/java-17-openjdk-amd64/bin/jps"
+    alias jstat "/usr/lib/jvm/java-17-openjdk-amd64/bin/jstat"
+  end
+end
+
+function JAVA_21 --description 'Sets JAVA_HOME to Java OpenJDK 21'
+  if test -d /usr/lib/jvm/java-21-openjdk-amd64/
+    echo "Setting OpenJDK Java 21"
+    set -gx JAVA_HOME /usr/lib/jvm/java-21-openjdk-amd64/
+    alias java "/usr/lib/jvm/java-21-openjdk-amd64/bin/java"
+    alias javac "/usr/lib/jvm/java-21-openjdk-amd64/bin/javac"
+    alias jshell "/usr/lib/jvm/java-21-openjdk-amd64/bin/jshell"
+    alias jps "/usr/lib/jvm/java-21-openjdk-amd64/bin/jps"
+    alias jstat "/usr/lib/jvm/java-21-openjdk-amd64/bin/jstat"
+  end
+end
+
+function JAVA_22 --description 'Sets JAVA_HOME to Java OpenJDK 22'
+  if test -d /usr/lib/jvm/java-22-openjdk-amd64/
+    echo "Setting OpenJDK Java 22"
+    set -gx JAVA_HOME /usr/lib/jvm/java-22-openjdk-amd64/
+    alias java "/usr/lib/jvm/java-22-openjdk-amd64/bin/java"
+    alias javac "/usr/lib/jvm/java-22-openjdk-amd64/bin/javac"
+    alias jshell "/usr/lib/jvm/java-22-openjdk-amd64/bin/jshell"
+    alias jps "/usr/lib/jvm/java-22-openjdk-amd64/bin/jps"
+    alias jstat "/usr/lib/jvm/java-22-openjdk-amd64/bin/jstat"
   end
 end
 
@@ -83,7 +104,7 @@ if status --is-interactive
   install_starship
   most_pager
   ssh_agent
-  JAVA_11
+  JAVA_17
 end
 
 # Config bun
