@@ -1,6 +1,6 @@
 [include]
   path = .gitconfig-common
-[includeIf "gitdir:~/repos/"]
+[includeIf "gitdir:~/repos/personal/"]
   path = .gitconfig-personal
 [includeIf "gitdir:~/repos/work/"]
   path = .gitconfig-work
