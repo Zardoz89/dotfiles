@@ -40,6 +40,12 @@ function ssh_agent --description 'add the ssh keys to the ssh_agent'
     ssh-add -l | grep -q $fingerprint
       or ssh-add $identity
   end
+  if test -f $HOME/.ssh/id_ed25519
+    set -l identity $HOME/.ssh/id_ed25519
+    set -l fingerprint (ssh-keygen -lf $identity | awk '{print $2}')
+    ssh-add -l | grep -q $fingerprint
+      or ssh-add $identity
+  end
 end
 
 function JAVA_ORACLE_8 --description 'Sets JAVA_HOME to Java Oracle 8'
