@@ -125,6 +125,10 @@ if test -d $HOME/.cargo/env
   source $HOME/.cargo/env
 end
 
+# Config NeoVIM local install
+if test -d $HOME/opt/nvim-linux64/bin
+  fish_add_path -g $HOME/opt/nvim-linux64/bin
+end
 
 # Alias
 
