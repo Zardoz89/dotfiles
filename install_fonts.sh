@@ -4,7 +4,7 @@ INSTALLED_FONTS=`fc-list : family style file spacing | grep -i fura`
 
 if [ -z $INSTALLED_FONTS ] || [ $2 == "force" ]; then
 
-  FONT_DOWNLOAD_URL='https://github.com/ryanoasis/nerd-fonts/releases/download/v2.0.0/FiraCode.zip'
+  FONT_DOWNLOAD_URL='https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Fi3.2.1/FiraCode.zip'
   TMP_WORKDIR=`mktemp -d`
   TMP_ZIP=font.zip
 
