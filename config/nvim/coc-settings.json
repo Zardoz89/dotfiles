@@ -7,7 +7,7 @@
   "diagnostic.errorSign":           "✖",
   "diagnostic.enable":              true,
   // Java home
-  "xml.java.home":"/usr/lib/jvm/java-11-openjdk-amd64",
+  "xml.java.home":"/usr/lib/jvm/java-17-openjdk-amd64",
   "languageserver": {
     "d": {
       "command": "~/.dub/packages/.bin/dls-latest/dls", // this path should be printed with the previous commands
