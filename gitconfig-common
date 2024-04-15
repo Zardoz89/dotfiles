@@ -12,10 +12,6 @@
   conflictstyle = diff3
 [mergetool "kdiff3NoAuto"]
   cmd = QT_QPA_PLATFORM=xcb kdiff3 --L1 \"$MERGED (Base)\" --L2 \"$MERGED (Local)\" --L3 \"$MERGED (Remote)\" -o \"$MERGED\" \"$BASE\" \"$LOCAL\" \"$REMOTE\"
-[mergetool "meld"]
-  cmd = meld --auto-merge "$LOCAL" "$MERGED" "$REMOTE" --output "$MERGED" --diff $BASE $LOCAL --diff $BASE $REMOTE
-[mergetool "meld2"]
-  cmd = meld "$LOCAL" "$BASE" "$REMOTE" --output "$MERGED"
 [receive]
   fsckobjects = true
 [push]
