@@ -28,23 +28,29 @@ function most_pager --description 'sets most as man pager if is installed'
 end
 
 function ssh_agent --description 'add the ssh keys to the ssh_agent'
-  if test -f $HOME/.ssh/id_rsa
-    set -l identity $HOME/.ssh/id_rsa
-    set -l fingerprint (ssh-keygen -lf $identity | awk '{print $2}')
+  for identityFile in (find $HOME/.ssh/ -type f -name "id_*")
+    set -l fingerprint (ssh-keygen -lf $identityFile | awk '{print $2}')
     ssh-add -l | grep -q $fingerprint
-      or ssh-add $identity
+      or ssh-add $identityFile
   end
-  if test -f $HOME/.ssh/id_ecdsa
-    set -l identity $HOME/.ssh/id_ecdsa
-    set -l fingerprint (ssh-keygen -lf $identity | awk '{print $2}')
-    ssh-add -l | grep -q $fingerprint
-      or ssh-add $identity
-  end
-  if test -f $HOME/.ssh/id_ed25519
-    set -l identity $HOME/.ssh/id_ed25519
-    set -l fingerprint (ssh-keygen -lf $identity | awk '{print $2}')
-    ssh-add -l | grep -q $fingerprint
-      or ssh-add $identity
+
+  # if test -f $HOME/.ssh/yubikey-ssh.digibis.pub
+  #   set -l identity $HOME/.ssh/yubikey-ssh.digibis.pub
+  #   set -l fingerprint (ssh-keygen -lf $identity | awk '{print $2}')
+  #   ssh-add -l | grep -q $fingerprint
+  #     or ssh-add $identity
+  # end
+  # if test -f $HOME/.ssh/yubikey-ssh.baratz.pub
+  #   set -l identity $HOME/.ssh/yubikey-ssh.baratz.pub
+  #   set -l fingerprint (ssh-keygen -lf $identity | awk '{print $2}')
+  #   ssh-add -l | grep -q $fingerprint
+  #     or ssh-add $identity
+  # end
+  if test -f /usr/lib/x86_64-linux-gnu/opensc-pkcs11.so
+    set -l pkcs11Registered (ssh-add -l | grep PIV)
+    if test -z "$pkcs11Registered"
+      ssh-add -s /usr/lib/x86_64-linux-gnu/opensc-pkcs11.so
+    end
   end
 end
 
