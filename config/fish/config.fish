@@ -27,31 +27,40 @@ function most_pager --description 'sets most as man pager if is installed'
   end
 end
 
+
 function ssh_agent --description 'add the ssh keys to the ssh_agent'
+  setup_kssaskpass
+
   for identityFile in (find $HOME/.ssh/ -type f -name "id_*")
     set -l fingerprint (ssh-keygen -lf $identityFile | awk '{print $2}')
     ssh-add -l | grep -q $fingerprint
       or ssh-add $identityFile
   end
 
-  # if test -f $HOME/.ssh/yubikey-ssh.digibis.pub
-  #   set -l identity $HOME/.ssh/yubikey-ssh.digibis.pub
-  #   set -l fingerprint (ssh-keygen -lf $identity | awk '{print $2}')
-  #   ssh-add -l | grep -q $fingerprint
-  #     or ssh-add $identity
-  # end
-  # if test -f $HOME/.ssh/yubikey-ssh.baratz.pub
-  #   set -l identity $HOME/.ssh/yubikey-ssh.baratz.pub
-  #   set -l fingerprint (ssh-keygen -lf $identity | awk '{print $2}')
-  #   ssh-add -l | grep -q $fingerprint
-  #     or ssh-add $identity
-  # end
   if test -f /usr/lib/x86_64-linux-gnu/opensc-pkcs11.so
     set -l pkcs11Registered (ssh-add -l | grep PIV)
     if test -z "$pkcs11Registered"
       ssh-add -s /usr/lib/x86_64-linux-gnu/opensc-pkcs11.so
     end
   end
+end
+
+function setup_kssaskpass --description 'sets ksshaskpass to be used to ask ssh passkey'
+  if test $XDG_CURRENT_DESKTOP = "KDE"
+      and type -q ksshaskpass
+    set -g -x SSH_ASKPASS /usr/bin/ksshaskpass
+    set -g -x SSH_ASKPASS_REQUIRE "prefer"
+  end
+end
+
+function ssh_agent_start -d "start a new ssh agent"
+  if test -z "$SSH_ENV"
+    set -g -x SSH_ENV $HOME/.ssh/environment
+  end
+
+  ssh-agent -c | sed 's/^echo/#echo/' > $SSH_ENV
+  chmod 600 $SSH_ENV
+  source $SSH_ENV > /dev/null
 end
 
 function JAVA_ORACLE_8 --description 'Sets JAVA_HOME to Java Oracle 8'
