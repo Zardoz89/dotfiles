@@ -10,10 +10,15 @@
 
 [merge]
   tool = kdiff3
-  #conflictstyle = diff3
-  conflictstyle = zdiff3
+  conflictstyle = diff3
+  #conflictstyle = zdiff3
+
+[mergetool "kdiff3"]
+  conflictstyle = diff3
+  cmd = QT_QPA_PLATFORM=xcb kdiff3 --auto --L1 \"$MERGED (Base)\" --L2 \"$MERGED (Local)\" --L3 \"$MERGED (Remote)\" -o \"$MERGED\" \"$BASE\" \"$LOCAL\" \"$REMOTE\"
 
 [mergetool "kdiff3NoAuto"]
+  conflictstyle = diff3
   cmd = QT_QPA_PLATFORM=xcb kdiff3 --L1 \"$MERGED (Base)\" --L2 \"$MERGED (Local)\" --L3 \"$MERGED (Remote)\" -o \"$MERGED\" \"$BASE\" \"$LOCAL\" \"$REMOTE\"
 
 [receive]
