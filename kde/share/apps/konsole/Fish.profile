@@ -1,7 +1,8 @@
 [Appearance]
 AntiAliasFonts=true
 ColorScheme=Mio
-Font=FiraCode Nerd Font Mono Ret,10,-1,5,53,0,0,0,0,0,Regular
+Font=FiraCode Nerd Font Mono Ret,10,-1,5,450,0,0,0,0,0,0,0,0,0,0,1,Regular
+UseFontLineChararacters=false
 
 [Cursor Options]
 CustomCursorColor=255,255,255
@@ -15,9 +16,10 @@ TerminalColumns=120
 
 [Interaction Options]
 AutoCopySelectedText=true
+CopyTextAsHTML=false
 
 [Scrolling]
-HistorySize=20000
+HistorySize=30000
 
 [Terminal Features]
 BlinkingCursorEnabled=true
