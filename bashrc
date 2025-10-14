@@ -135,4 +135,7 @@ export NVM_DIR="$HOME/.nvm"
 if [ -f "$HOME/opt/nvim-linux64/bin/nvim" ]; then
   export PATH="$HOME/opt/nvim-linux64/bin:$PATH"
 fi
+if [ -f "$HOME/opt/nvim-linux-x86_64/bin/nvim" ]; then
+  export PATH="$HOME/opt/nvim-linux-x86_64/bin:$PATH"
+fi
 

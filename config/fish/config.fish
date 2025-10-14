@@ -143,7 +143,10 @@ end
 # Config NeoVIM local install
 if test -d $HOME/opt/nvim-linux64/bin
   fish_add_path -g $HOME/opt/nvim-linux64/bin
+else if test -d $HOME/opt/nvim-linux-x86_64/bin
+  fish_add_path -g $HOME/opt/nvim-linux-x86_64/bin
 end
+
 
 # Alias
 
