@@ -37,7 +37,7 @@ set hidden     " Not close buffer, only hide it
 set splitright " Split vertically to the right.
 set splitbelow " Split horizontally below.
 
-set pastetoggle=<F2> " Use F2 to do Ctrl+V from console
+"set pastetoggle=<F2> " Use F2 to do Ctrl+V from console
 
 set number " show line number
 set ru " Ruler active
