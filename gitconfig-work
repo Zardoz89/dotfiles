@@ -5,6 +5,8 @@
     autocrlf = false
 [http "https://git.digibis.com"]
     sslverify = false
+[http "https://gitlab.baratznet.cloud"]
+    sslverify = false
 [filter "dosify"]
     clean = unix2dos
     smudge = unix2dos
