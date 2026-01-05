@@ -13,6 +13,10 @@
   conflictstyle = diff3
   #conflictstyle = zdiff3
 
+[merge "mergiraf"]
+    name = mergiraf
+    driver = mergiraf merge --git %O %A %B -s %S -x %X -y %Y -p %P -l %L
+
 [mergetool "kdiff3"]
   conflictstyle = diff3
   cmd = QT_QPA_PLATFORM=xcb kdiff3 --auto --L1 \"$MERGED (Base)\" --L2 \"$MERGED (Local)\" --L3 \"$MERGED (Remote)\" -o \"$MERGED\" \"$BASE\" \"$LOCAL\" \"$REMOTE\"
