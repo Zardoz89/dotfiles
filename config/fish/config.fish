@@ -138,6 +138,10 @@ end
 # Config cargo/rust
 if test -d $HOME/.cargo/env
   source $HOME/.cargo/env
+  set PATH $PATH "$HOME/.cargo/bin"
+end
+if test -d $HOME/.cargo/bin
+  set PATH $PATH "$HOME/.cargo/bin"
 end
 
 # Config NeoVIM local install
@@ -151,7 +155,7 @@ end
 # Alias
 
 
-
+# Cargo
 
 # Created by `pipx` on 2023-09-21 05:53:26
 set PATH $PATH "$HOME/.local/bin"
