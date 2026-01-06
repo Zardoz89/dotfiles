@@ -108,6 +108,18 @@ function JAVA_21 --description 'Sets JAVA_HOME to Java OpenJDK 21'
   end
 end
 
+function JAVA_25 --description 'Sets JAVA_HOME to Java OpenJDK 25'
+  if test -d /usr/lib/jvm/java-25-openjdk-amd64/
+    echo "Setting OpenJDK Java 25"
+    set -gx JAVA_HOME /usr/lib/jvm/java-25-openjdk-amd64/
+    alias java "/usr/lib/jvm/java-25-openjdk-amd64/bin/java"
+    alias javac "/usr/lib/jvm/java-25-openjdk-amd64/bin/javac"
+    alias jshell "/usr/lib/jvm/java-25-openjdk-amd64/bin/jshell"
+    alias jps "/usr/lib/jvm/java-25-openjdk-amd64/bin/jps"
+    alias jstat "/usr/lib/jvm/java-25-openjdk-amd64/bin/jstat"
+  end
+end
+
 function JAVA_22 --description 'Sets JAVA_HOME to Java OpenJDK 22'
   if test -d /usr/lib/jvm/java-22-openjdk-amd64/
     echo "Setting OpenJDK Java 22"
