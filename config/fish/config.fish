@@ -37,7 +37,7 @@ function ssh_agent --description 'add the ssh keys to the ssh_agent'
       or ssh-add $identityFile
   end
 
-  if test -f /usr/lib/x86_64-linux-gnu/opensc-pkcs11.so
+  if test -f /usr/lib/x86_64-linux-gnu/opensc-pkcs11.so ;and pkcs11-tool -M &>/dev/null
     set -l pkcs11Registered (ssh-add -l | grep PIV)
     if test -z "$pkcs11Registered"
       ssh-add -s /usr/lib/x86_64-linux-gnu/opensc-pkcs11.so
