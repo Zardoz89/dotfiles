@@ -17,13 +17,9 @@ Plug 'tpope/vim-surround' " add/change/delete surroding pairs -> dst
 "Allow to see registers with '"' or '@' in normal mode or <Ctrl-R> in insert mode
 Plug 'junegunn/vim-peekaboo'
 
-if has('nvim')
-  "Plug 'roxma/nvim-yarp'
-  "Plug 'roxma/vim-hug-neovim-rpc'
-  Plug 'lukas-reineke/indent-blankline.nvim'
-else
-  Plug 'nathanaelkane/vim-indent-guides' "Show identation levels with different background colors
-endif
+"Plug 'roxma/nvim-yarp'
+"Plug 'roxma/vim-hug-neovim-rpc'
+Plug 'lukas-reineke/indent-blankline.nvim'
 
 " Git
 Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle'  }

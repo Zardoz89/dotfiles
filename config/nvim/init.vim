@@ -104,36 +104,8 @@ autocmd FileType gitcommit setlocal spell spelllang=es_es
 
 " OS and GVim/Vim/NVim stuff ***************************************************
 
-" Correct paths for vim/nvim on windows&linux and colors
-if has('nvim') " NVIM!
-  let s:editor_root=expand("~/.config/nvim")
-else " VIM/GVIM
-  set nocompatible
-  if !has("unix")
-    " Vim/GVim Windows
-    let s:editor_root=expand("~/vimfiles")
-
-    " Try to use Fira Code  font
-    set anti enc=utf-8
-    if has("gui_running")
-      if has("gui_gtk2")
-        set guifont=Fira\ Code\ 10
-      else
-        set guifont=Fira\ Code:h10::cDEFAULT
-      endif
-    endif
-
-    " Fix Windows stuff
-    " ugly characters on menu and welcome screen
-    set encoding=utf-8
-    " backspace and cursor keys wrap to previous/next line
-    set backspace=indent,eol,start whichwrap+=<,>,[,
-
-  else " Vim/GVim on Unix
-    let s:editor_root=expand("~/.vim")
-    let runtimepath= s:editor_root . ',' . ',$VIMRUNTIME'
-  endif
-endif
+" Correct paths for nvim on windows&linux
+let s:editor_root=expand("~/.config/nvim")
 
 " Config permanet undo files and backup storage
 " if has('persistent_undo')
@@ -180,10 +152,8 @@ execute 'source ' . s:editor_root . '/plugins.vim'
 " ******************************************************************************
 
 " Terminal stuff
-if has('nvim')
-  set shell=/usr/bin/fish
-  autocmd TermOpen * startinsert
-endif
+set shell=/usr/bin/fish
+autocmd TermOpen * startinsert
 
 " NERD tree
 let NERDTreeShowBookmarks=1
@@ -215,16 +185,8 @@ let g:javascript_plugin_jsdoc = 1
 " Java Syntax colors
 let java_highlight_functions = 1
 
-if has('nvim')
-  " indent-blankline confige
-  " TODO Why are all fucking examples using LUA ?
-else
-  " Enable indent guides on boot and allow colorschemes to style them.
-  let g:indent_guides_enable_on_vim_startup=1
-  let g:indent_guides_auto_colors = 0
-  autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd guibg=bg
-  autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg='#0B0D0E' ctermbg=darkgrey
-endif
+" indent-blankline confige
+" TODO Why are all fucking examples using LUA ?
 
 
 
@@ -256,12 +218,10 @@ imap <C-s> <Esc><c-s>
 nmap <C-r> :e<CR>
 
 " NeoVim terminal
-if has('nvim')
-  tnoremap <Esc> <C-\><C-n>
-  tnoremap <A-j> <C-\><C-n><C-w>j
-  tnoremap <A-k> <C-\><C-n><C-w>k
-  tnoremap <A-l> <C-\><C-n><C-w>l
-endif
+tnoremap <Esc> <C-\><C-n>
+tnoremap <A-j> <C-\><C-n><C-w>j
+tnoremap <A-k> <C-\><C-n><C-w>k
+tnoremap <A-l> <C-\><C-n><C-w>l
 
 " Wrap visual navigation
 noremap  <buffer> <silent> <Up>   gk
@@ -355,8 +315,9 @@ highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 match OverLength /\%121v.\+/
 
 " Fix anoying bug hanging nvim with the external USB driver automount
-set shada+=r/mnt/backup
-set shada+=r/mnt/dgb
+"set shada+=r/mnt/backup
+"set shada+=r/mnt/tmp
+"set shada+=r/mnt/dgb
 
 
 
