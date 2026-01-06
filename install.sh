@@ -15,13 +15,20 @@ ln -sf ${DIR}/gitconfig-common ~/.gitconfig-common
 ln -sf ${DIR}/gitconfig-personal ~/.gitconfig-personal
 ln -sf ${DIR}/gitconfig-work ~/.gitconfig-work
 
+mkdir -p ~/.config/vim
+ln -sf ${DIR}/config/vim/init.vim ~/.config/vim/init.vim
+ln -sf ${DIR}/config/vim/ginit.vim ~/.config/vim/ginit.vim
+ln -sf ${DIR}/config/vim/plugins.vim ~/.config/vim/plugins.vim
+ln -sf ${DIR}/config/vim/coc-settings.json ~/.config/vim/coc-settings.json
+ln -sf ${DIR}/config/vim/coc-config.vim ~/.config/vim/coc-config.vim
+ln -sf ${DIR}/config/vim/init.vim ~/.vimrc
+
 mkdir -p ~/.config/nvim
 ln -sf ${DIR}/config/nvim/init.vim ~/.config/nvim/init.vim
 ln -sf ${DIR}/config/nvim/ginit.vim ~/.config/nvim/ginit.vim
 ln -sf ${DIR}/config/nvim/plugins.vim ~/.config/nvim/plugins.vim
 ln -sf ${DIR}/config/nvim/coc-settings.json ~/.config/nvim/coc-settings.json
 ln -sf ${DIR}/config/nvim/coc-config.vim ~/.config/nvim/coc-config.vim
-ln -sf ${DIR}/config/nvim/init.vim ~/.vimrc
 
 mkdir -p ~/.config/fish
 ln -sf ${DIR}/config/fish/config.fish ~/.config/fish/config.fish
