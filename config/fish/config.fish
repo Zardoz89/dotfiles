@@ -144,16 +144,15 @@ end
 if test -d $HOME/.bun
   set -gx BUN_INSTALL $HOME/.bun
   fish_add_path -g $BUN_INSTALL/bin
-  #PATH="$BUN_INSTALL/bin:$PATH"
 end
 
 # Config cargo/rust
 if test -d $HOME/.cargo/env
   source $HOME/.cargo/env
-  set PATH $PATH "$HOME/.cargo/bin"
+  fish_add_path -g $HOME/.cargo/env
 end
 if test -d $HOME/.cargo/bin
-  set PATH $PATH "$HOME/.cargo/bin"
+  fish_add_path -g $HOME/.cargo/bin
 end
 
 # Config NeoVIM local install
