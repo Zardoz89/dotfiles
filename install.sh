@@ -24,11 +24,18 @@ ln -sf ${DIR}/config/vim/coc-config.vim ~/.config/vim/coc-config.vim
 ln -sf ${DIR}/config/vim/init.vim ~/.vimrc
 
 mkdir -p ~/.config/nvim
-ln -sf ${DIR}/config/nvim/init.vim ~/.config/nvim/init.vim
+mkdir -p ~/.config/nvim/lua/my
+ln -sf ${DIR}/config/nvim/init.lua ~/.config/nvim/init.lua
+ln -sf ${DIR}/config/nvim/lua/my/settings.lua ~/.config/nvim/lua/my/settings.lua
+ln -sf ${DIR}/config/nvim/lua/my/lazy.lua ~/.config/nvim/lua/my/lazy.lua
+ln -sf ${DIR}/config/nvim/lua/my/maps.lua ~/.config/nvim/lua/my/maps.lua
+ln -sf ${DIR}/config/nvim/lua/my/fileformats.lua ~/.config/nvim/lua/my/fileformats.lua
+ln -sf ${DIR}/config/nvim/lua/plugins ~/.config/nvim/lua/plugins
+#ln -sf ${DIR}/config/nvim/init.vim ~/.config/nvim/init.vim
 ln -sf ${DIR}/config/nvim/ginit.vim ~/.config/nvim/ginit.vim
-ln -sf ${DIR}/config/nvim/plugins.vim ~/.config/nvim/plugins.vim
-ln -sf ${DIR}/config/nvim/coc-settings.json ~/.config/nvim/coc-settings.json
-ln -sf ${DIR}/config/nvim/coc-config.vim ~/.config/nvim/coc-config.vim
+#ln -sf ${DIR}/config/nvim/plugins.vim ~/.config/nvim/plugins.vim
+#ln -sf ${DIR}/config/nvim/coc-settings.json ~/.config/nvim/coc-settings.json
+#ln -sf ${DIR}/config/nvim/coc-config.vim ~/.config/nvim/coc-config.vim
 
 mkdir -p ~/.config/fish
 ln -sf ${DIR}/config/fish/config.fish ~/.config/fish/config.fish
