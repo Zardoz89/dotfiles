@@ -53,7 +53,8 @@ ln -sf ${DIR}/kde/share/apps/konsole/Mio.colorscheme          ~/.local/share/kon
 ln -sf ${DIR}/kde/share/apps/konsole/Shell.profile            ~/.local/share/konsole/Shell.profile
 ln -sf ${DIR}/kde/share/apps/konsole/Fish.profile             ~/.local/share/konsole/Fish.profile
 
+cd ${DIR}
 # Install fisher, fish plugins and nvm
-fish install.fish
+fish ./install.fish
 
 
