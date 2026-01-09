@@ -1,7 +1,7 @@
 -- ~/nvim/lua/plugins/molokai_colorscheme.lua
 
 return {
-    "tomasr/molokai",
+    "UtkarshVerma/molokai.nvim",
     lazy = false,
     priority = 1000,
     config = function()
