@@ -1,12 +1,12 @@
 #!/usr/bin/fish
 
 # Install fisher
-curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
-
+if ! type -q fisher
+  curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
+end
 # Install fish plugins
 fisher install hauleth/agnoster
 
-# Install nvm
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+# Install nvm for fish
 fisher install FabioAntunes/fish-nvm edc/bass
 

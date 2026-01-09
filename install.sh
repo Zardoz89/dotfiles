@@ -6,7 +6,7 @@
 #kde
 
 DIR=$(pwd)
-cd ~
+pushd ~
 
 ln -sf ${DIR}/bashrc ~/.bashrc
 
@@ -53,8 +53,13 @@ ln -sf ${DIR}/kde/share/apps/konsole/Mio.colorscheme          ~/.local/share/kon
 ln -sf ${DIR}/kde/share/apps/konsole/Shell.profile            ~/.local/share/konsole/Shell.profile
 ln -sf ${DIR}/kde/share/apps/konsole/Fish.profile             ~/.local/share/konsole/Fish.profile
 
-cd ${DIR}
-# Install fisher, fish plugins and nvm
-fish ./install.fish
+# Install nvm
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
 
+popd
+if command -v fish &> /dev/null
+then
+  # Install fisher, fish plugins and nvm
+  fish ./install.fish
+fi
 
