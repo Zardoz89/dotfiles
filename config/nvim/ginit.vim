@@ -8,7 +8,7 @@ GuiFont FiraCode Nerd Font Mono Ret:h10
  
 GuiScrollBar 1
 GuiRenderLigatures 1
-"   GuiTabline 0
+GuiTabline 1
 "   GuiPopupmenu 0
 
  
