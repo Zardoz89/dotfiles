@@ -139,3 +139,6 @@ if [ -f "$HOME/opt/nvim-linux-x86_64/bin/nvim" ]; then
   export PATH="$HOME/opt/nvim-linux-x86_64/bin:$PATH"
 fi
 
+
+# opencode
+export PATH=$HOME/.opencode/bin:$PATH

@@ -162,6 +162,10 @@ else if test -d $HOME/opt/nvim-linux-x86_64/bin
   fish_add_path -g $HOME/opt/nvim-linux-x86_64/bin
 end
 
+# OpenCode.ai
+if test -d $HOME/.opencode/bin
+  fish_add_path -g $HOME/.opencode/bin
+end
 
 # Alias
 
