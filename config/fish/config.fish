@@ -137,7 +137,7 @@ if status --is-interactive
   install_starship
   most_pager
   ssh_agent
-  JAVA_17
+  JAVA_21
 end
 
 # Config Ruby
