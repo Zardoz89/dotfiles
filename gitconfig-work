@@ -3,8 +3,13 @@
     name = Luis Panadero Guardeño
 [core]
     autocrlf = false
+
 [http "https://git.digibis.com"]
     sslverify = false
+
+[url "https://luis.panadero@gitlab.baratznet.cloud/"]
+    insteadOf = https://gitlab.baratznet.cloud/
+
 [filter "dosify"]
     clean = unix2dos
     smudge = unix2dos
