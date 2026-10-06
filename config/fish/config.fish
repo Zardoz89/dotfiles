@@ -140,6 +140,12 @@ if status --is-interactive
   JAVA_17
 end
 
+# Config Ruby
+if test -d $HOME/.local/share/gem/ruby/3.3.0/bin
+  fish_add_path -g $HOME/.local/share/gem/ruby/3.3.0/bin
+
+end
+
 # Config bun
 if test -d $HOME/.bun
   set -gx BUN_INSTALL $HOME/.bun
@@ -174,3 +180,5 @@ end
 
 # Created by `pipx` on 2023-09-21 05:53:26
 set PATH $PATH "$HOME/.local/bin"
+
+
