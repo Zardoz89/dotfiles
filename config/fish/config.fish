@@ -146,6 +146,12 @@ if test -d $HOME/.local/share/gem/ruby/3.3.0/bin
 
 end
 
+# Config pnpm
+if test -d $HOME/.local/share/pnpm
+  set -gx PNPM_HOME $HOME/.local/share/pnpm
+  fish_add_path -g $PNPM_HOME/bin
+end
+
 # Config bun
 if test -d $HOME/.bun
   set -gx BUN_INSTALL $HOME/.bun
